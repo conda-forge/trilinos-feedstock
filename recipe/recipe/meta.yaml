@@ -13,15 +13,16 @@ source:
 
 build:
   number: 1
-  skip: true  # [win or py3k]
+  skip: true  # [win]
 
 requirements:
   build:
     - cmake >=2.8.11
     - toolchain
     - openmpi
-    - python
     - openblas 0.2.19|0.2.19.*
+    - netcdf-cxx4
+    - hdf5
 
   run:
     - openmpi
@@ -30,8 +31,8 @@ requirements:
 test:
   commands:
     - test -f $PREFIX/include/TeuchosCore_ConfigDefs.hpp
-    - test -f $PREFIX/lib/libteuchoscore.12.10.1.dylib    # [osx]
-    - test -f $PREFIX/lib/libteuchoscore.so.12.10.1       # [linux]
+    - test -f $PREFIX/lib/libteuchoscore.{{ version }}.dylib    # [osx]
+    - test -f $PREFIX/lib/libteuchoscore.so.{{ version }}       # [linux]
 
 about:
   home: https://trilinos.org

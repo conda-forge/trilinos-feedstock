@@ -40,7 +40,6 @@ cat << EOF | docker run -i \
                         -v "${RECIPE_ROOT}":/recipe_root \
                         -v "${FEEDSTOCK_ROOT}":/feedstock_root \
                         -e HOST_USER_ID="${HOST_USER_ID}" \
-                        -e CONDA_PY="${CONDA_PY}" \
                         -a stdin -a stdout -a stderr \
                         condaforge/linux-anvil \
                         bash || exit 1
@@ -57,6 +56,14 @@ conda clean --lock
 
 conda install --yes --quiet conda-forge-build-setup
 source run_conda_forge_build_setup
+
+
+# Install the yum requirements defined canonically in the
+# "recipe/yum_requirements.txt" file. After updating that file,
+# run "conda smithy rerender" and this line be updated
+# automatically.
+/usr/bin/sudo -n yum install -y openssh-clients
+
 
 conda build /recipe_root --quiet || exit 1
 upload_or_check_non_existence /recipe_root conda-forge --channel=main || exit 1

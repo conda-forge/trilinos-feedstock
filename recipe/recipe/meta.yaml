@@ -21,8 +21,6 @@ requirements:
     - toolchain
     - openmpi
     - openblas 0.2.19|0.2.19.*
-    - netcdf-cxx4
-    - hdf5
 
   run:
     - openmpi

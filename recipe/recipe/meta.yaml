@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win or py3k]
 
 requirements:
@@ -21,11 +21,10 @@ requirements:
     - toolchain
     - openmpi
     - python
-    - openblas 0.2.19|0.2.19.*
-
+    - openblas 0.2.20|0.2.20.*
   run:
     - openmpi
-    - openblas 0.2.19|0.2.19.*
+    - openblas 0.2.20|0.2.20.*
 
 test:
   commands:

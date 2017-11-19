@@ -22,7 +22,6 @@ requirements:
     - openmpi
     - python
     - openblas 0.2.20|0.2.20.*
-
   run:
     - openmpi
     - openblas 0.2.20|0.2.20.*

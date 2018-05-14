@@ -1,6 +1,6 @@
 {% set name = "Trilinos" %}
-{% set version = "12.10.1" %}
-{% set sha256 = "ea8ff573bb1f452f2585950cdabe7e2c84cb35013844c58dc878c66bd4245e06" %}
+{% set version = "12.12.1" %}
+{% set sha256 = "7c67d83befbeabc773661bcdfee2850c404d249160b755d3f1be2e96f564f9fd" %}
 
 package:
   name: {{ name|lower }}
@@ -12,26 +12,27 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
-  skip: true  # [win or py3k]
+  number: 1
+  skip: true  # [win]
 
 requirements:
   build:
     - cmake >=2.8.11
     - toolchain
     - openmpi
-    - python
     - openblas 0.2.19|0.2.19.*
+    - boost-cpp
 
   run:
     - openmpi
     - openblas 0.2.19|0.2.19.*
+    - boost-cpp
 
 test:
   commands:
     - test -f $PREFIX/include/TeuchosCore_ConfigDefs.hpp
-    - test -f $PREFIX/lib/libteuchoscore.12.10.1.dylib    # [osx]
-    - test -f $PREFIX/lib/libteuchoscore.so.12.10.1       # [linux]
+    - test -f $PREFIX/lib/libteuchoscore.{{ version }}.dylib    # [osx]
+    - test -f $PREFIX/lib/libteuchoscore.so.{{ version }}       # [linux]
 
 about:
   home: https://trilinos.org

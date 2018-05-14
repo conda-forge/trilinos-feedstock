@@ -18,7 +18,6 @@ cmake \
   -D TPL_ENABLE_MPI:BOOL=ON \
   -D MPI_BASE_DIR:PATH=$PREFIX \
   -D MPI_EXEC:FILEPATH=$PREFIX/bin/mpiexec \
-  -D MPI_EXEC_PRE_NUMPROCS_FLAGS:STRING="$MPI_FLAGS" \
   -D PYTHON_EXECUTABLE:FILEPATH=$PYTHON \
   -D Trilinos_ENABLE_Fortran:BOOL=OFF \
   -D Trilinos_ENABLE_ALL_PACKAGES:BOOL=OFF \
@@ -59,22 +58,22 @@ cmake \
   -D Ifpack2_ENABLE_TESTS:BOOL=OFF \
   -D Trilinos_ENABLE_Stratimikos:BOOL=ON \
   -D Trilinos_ENABLE_FEI:BOOL=ON \
-  -D Trilinos_ENABLE_Teko:BOOL=OFF \
+  -D Trilinos_ENABLE_Teko:BOOL=ON \
   -D Trilinos_ENABLE_Intrepid:BOOL=ON \
-  -D Trilinos_ENABLE_Intrepid2:BOOL=ON \
   -D Trilinos_ENABLE_STK:BOOL=OFF \
   -D Trilinos_ENABLE_Phalanx:BOOL=ON \
   -D Trilinos_ENABLE_NOX:BOOL=ON \
   -D NOX_ENABLE_LOCA:BOOL=ON \
   -D Trilinos_ENABLE_MueLu:BOOL=ON \
   -D Trilinos_ENABLE_Rythmos:BOOL=ON \
-  -D Trilinos_ENABLE_Tempus:BOOL=ON \
   -D Trilinos_ENABLE_Stokhos:BOOL=ON \
   -D Trilinos_ENABLE_ROL:BOOL=ON \
   -D Trilinos_ENABLE_Piro:BOOL=ON \
-  -D Trilinos_ENABLE_Panzer:BOOL=ON \
   -D Trilinos_ENABLE_TrilinosCouplings:BOOL=ON \
   -D Trilinos_ENABLE_Pike:BOOL=ON \
   $SRC_DIR
 
 make -j $CPU_COUNT install
+
+# workaround for 12.12.1 fixed in next release
+rm $PREFIX/lib/cmake/tribits/doc/developers_guide/TribitsBuildReference.html

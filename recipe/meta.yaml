@@ -1,6 +1,6 @@
 {% set name = "Trilinos" %}
 {% set version = "12.12.1" %}
-{% set sha256 = "ea8ff573bb1f452f2585950cdabe7e2c84cb35013844c58dc878c66bd4245e06" %}
+{% set sha256 = "7c67d83befbeabc773661bcdfee2850c404d249160b755d3f1be2e96f564f9fd" %}
 
 package:
   name: {{ name|lower }}

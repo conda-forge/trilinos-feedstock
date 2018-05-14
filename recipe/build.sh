@@ -76,4 +76,4 @@ cmake \
 make -j $CPU_COUNT install
 
 # workaround for 12.12.1 fixed in next release
-rm $PREFIX/cmake/tribits/doc/developers_guide/TribitsBuildReference.html
+rm $PREFIX/lib/cmake/tribits/doc/developers_guide/TribitsBuildReference.html

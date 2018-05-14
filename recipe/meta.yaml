@@ -1,5 +1,5 @@
 {% set name = "Trilinos" %}
-{% set version = "12.10.1" %}
+{% set version = "12.12.1" %}
 {% set sha256 = "ea8ff573bb1f452f2585950cdabe7e2c84cb35013844c58dc878c66bd4245e06" %}
 
 package:
@@ -21,10 +21,12 @@ requirements:
     - toolchain
     - openmpi
     - openblas 0.2.19|0.2.19.*
+    - boost-cpp
 
   run:
     - openmpi
     - openblas 0.2.19|0.2.19.*
+    - boost-cpp
 
 test:
   commands:

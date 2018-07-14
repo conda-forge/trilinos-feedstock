@@ -1,33 +1,29 @@
-{% set name = "Trilinos" %}
 {% set version = "12.12.1" %}
-{% set sha256 = "7c67d83befbeabc773661bcdfee2850c404d249160b755d3f1be2e96f564f9fd" %}
 
 package:
-  name: {{ name|lower }}
+  name: trilinos
   version: {{ version }}
 
 source:
-  fn: trilinos-{{ version }}-Source.tar.gz
   url: http://trilinos.csbsju.edu/download/files/trilinos-{{ version }}-Source.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 7c67d83befbeabc773661bcdfee2850c404d249160b755d3f1be2e96f564f9fd
 
 build:
-  number: 2
+  number: 4
   skip: true  # [win]
 
 requirements:
   build:
     - cmake >=2.8.11
-    - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - openmpi
+    - {{ mpi }}
     - openblas
     - boost-cpp
 
   run:
-    - openmpi
+    - {{ mpi }}
     - openblas
     - boost-cpp
 

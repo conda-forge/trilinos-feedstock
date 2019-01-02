@@ -5,8 +5,8 @@ package:
   version: {{ version }}
 
 source:
-  url: http://trilinos.csbsju.edu/download/files/trilinos-{{ version }}-Source.tar.gz
-  sha256: 7c67d83befbeabc773661bcdfee2850c404d249160b755d3f1be2e96f564f9fd
+  url: https://github.com/trilinos/Trilinos/archive/trilinos-release-12-12-1.tar.gz
+  sha256: 5474c5329c6309224a7e1726cf6f0d855025b2042959e4e2be2748bd6bb49e18
 
 build:
   number: 1004

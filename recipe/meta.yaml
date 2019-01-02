@@ -10,7 +10,6 @@ source:
 
 build:
   number: 1004
-  skip: true  # [win]
 
 requirements:
   build:
@@ -21,7 +20,6 @@ requirements:
     - {{ mpi }}
     - openblas
     - boost-cpp
-
   run:
     - {{ mpi }}
     - openblas
@@ -29,9 +27,11 @@ requirements:
 
 test:
   commands:
-    - test -f $PREFIX/include/TeuchosCore_ConfigDefs.hpp
+    - test -f $PREFIX/include/TeuchosCore_ConfigDefs.hpp        # [unix]
     - test -f $PREFIX/lib/libteuchoscore.{{ version }}.dylib    # [osx]
     - test -f $PREFIX/lib/libteuchoscore.so.{{ version }}       # [linux]
+    - if not exist %PREFIX%\\Library\\include\\TeuchosCore_ConfigDefs.hpp exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\lib\\libteuchoscore.dll exit 1  # [win]
 
 about:
   home: https://trilinos.org

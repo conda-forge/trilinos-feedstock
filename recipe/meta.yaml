@@ -32,7 +32,7 @@ test:
     - test -f $PREFIX/lib/libteuchoscore.{{ version }}.dylib    # [osx]
     - test -f $PREFIX/lib/libteuchoscore.so.{{ version }}       # [linux]
     - if not exist %PREFIX%\\Library\\include\\TeuchosCore_ConfigDefs.hpp exit 1  # [win]
-    - if not exist %PREFIX%\\Library\\lib\\libteuchoscore.dll exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\lib\\teuchoscore.lib exit 1  # [win]
 
 about:
   home: https://trilinos.org

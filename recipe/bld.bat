@@ -1,4 +1,9 @@
 
+del cmake\tribits\doc\developers_guide\TribitsBuildReference.html
+rmdir /s /q cmake\tribits\examples\TribitsHelloWorld\hello_world
+rmdir /s /q cmake\tribits\python_utils
+del cmake\tribits\snapshot_tribits.py
+
 mkdir build && cd build
 
 cmake -LAH -G"NMake Makefiles" ^

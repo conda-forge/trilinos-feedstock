@@ -6,17 +6,11 @@ jobs:
   strategy:
     maxParallel: 4
     matrix:
-      win_c_compilervs2008cxx_compilervs2008mpimpich:
-        CONFIG: win_c_compilervs2008cxx_compilervs2008mpimpich
+      win_c_compilervs2008cxx_compilervs2008:
+        CONFIG: win_c_compilervs2008cxx_compilervs2008
         CONDA_BLD_PATH: D:\\bld\\
-      win_c_compilervs2008cxx_compilervs2008mpiopenmpi:
-        CONFIG: win_c_compilervs2008cxx_compilervs2008mpiopenmpi
-        CONDA_BLD_PATH: D:\\bld\\
-      win_c_compilervs2015cxx_compilervs2015mpimpich:
-        CONFIG: win_c_compilervs2015cxx_compilervs2015mpimpich
-        CONDA_BLD_PATH: D:\\bld\\
-      win_c_compilervs2015cxx_compilervs2015mpiopenmpi:
-        CONFIG: win_c_compilervs2015cxx_compilervs2015mpiopenmpi
+      win_c_compilervs2015cxx_compilervs2015:
+        CONFIG: win_c_compilervs2015cxx_compilervs2015
         CONDA_BLD_PATH: D:\\bld\\
   steps:
     # TODO: Fast finish on azure pipelines?

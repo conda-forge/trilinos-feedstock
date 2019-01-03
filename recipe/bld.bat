@@ -10,8 +10,12 @@ cmake -LAH -G"NMake Makefiles" ^
     -DTrilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=OFF ^
     -DTrilinos_ENABLE_TESTS:BOOL=OFF ^
     -DTrilinos_ENABLE_EXAMPLES:BOOL=OFF ^
-    -DTrilinos_ENABLE_Teuchos:BOOL=ON ^
+    -DTrilinos_ENABLE_Shards:BOOL=ON ^
+    -DTrilinos_ENABLE_GlobiPack:BOOL=ON ^
+    -DTrilinos_ENABLE_Zoltan:BOOL=ON ^
     -DTrilinos_ENABLE_ROL:BOOL=ON ^
+    -DTrilinos_ENABLE_RTOp:BOOL=ON ^
+    -DTrilinos_ENABLE_Sacado:BOOL=ON ^
     -DTPL_BLAS_LIBRARIES=%LIBRARY_PREFIX:\=/%/lib/openblas.lib ^
     -DTPL_LAPACK_LIBRARIES=%LIBRARY_PREFIX:\=/%/lib/openblas.lib ^
     ..

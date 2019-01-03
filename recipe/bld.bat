@@ -12,6 +12,8 @@ cmake -LAH -G"NMake Makefiles" ^
     -DTrilinos_ENABLE_EXAMPLES:BOOL=OFF ^
     -DTrilinos_ENABLE_Teuchos:BOOL=ON ^
     -DTrilinos_ENABLE_ROL:BOOL=ON ^
+    -DTPL_BLAS_LIBRARIES=%LIBRARY_PREFIX:\=/%/lib/openblas.lib ^
+    -DTPL_LAPACK_LIBRARIES=%LIBRARY_PREFIX:\=/%/lib/openblas.lib ^
     ..
 if errorlevel 1 exit 1
 

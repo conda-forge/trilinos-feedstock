@@ -17,11 +17,11 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - {{ mpi }}
+    - {{ mpi }}  # [unix]
     - openblas
     - boost-cpp
   run:
-    - {{ mpi }}
+    - {{ mpi }}  # [unix]
     - openblas
     - boost-cpp
 

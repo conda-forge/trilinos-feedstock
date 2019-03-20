@@ -9,7 +9,7 @@ source:
   sha256: 5474c5329c6309224a7e1726cf6f0d855025b2042959e4e2be2748bd6bb49e18
 
 build:
-  number: 1004
+  number: 1005
   skip: true  # [win and vc!=14]
 
 requirements:
@@ -18,12 +18,12 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
+    - libblas
+    - liblapack
     - {{ mpi }}  # [unix]
-    - openblas
     - boost-cpp
   run:
     - {{ mpi }}  # [unix]
-    - openblas
     - boost-cpp
 
 test:

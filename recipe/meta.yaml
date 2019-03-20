@@ -19,7 +19,7 @@ requirements:
     - {{ compiler('cxx') }}
   host:
     - libblas
-    - libcblas
+    - liblapack
     - {{ mpi }}  # [unix]
     - boost-cpp
   run:

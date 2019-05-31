@@ -1,7 +1,3 @@
-<!--
-# -*- mode: jinja -*-
--->
-
 About trilinos
 ==============
 
@@ -18,8 +14,77 @@ Fast, compiled object-oriented algorithms and enabling technologies for the solu
 Current build status
 ====================
 
-[![Linux,OSX](https://img.shields.io/circleci/project/github/conda-forge/trilinos-feedstock/master.svg?label=Linux,OSX)](https://circleci.com/gh/conda-forge/trilinos-feedstock)
-[![Windows](https://img.shields.io/appveyor/ci/conda-forge/trilinos-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/trilinos-feedstock/branch/master)
+
+<table><tr>
+    <td>CircleCI</td>
+    <td>
+      <a href="https://circleci.com/gh/conda-forge/trilinos-feedstock">
+        <img alt="OSX" src="https://img.shields.io/circleci/project/github/conda-forge/trilinos-feedstock/master.svg?label=OSX">
+      </a>
+    </td>
+  </tr><tr>
+    <td>Appveyor</td>
+    <td>
+      <a href="https://ci.appveyor.com/project/conda-forge/trilinos-feedstock/branch/master">
+        <img alt="windows" src="https://img.shields.io/appveyor/ci/conda-forge/trilinos-feedstock/master.svg?label=Windows">
+      </a>
+    </td>
+  </tr>
+    
+  <tr>
+    <td>Azure</td>
+    <td>
+      <details>
+        <summary>
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5388&branchName=master">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master">
+          </a>
+        </summary>
+        <table>
+          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
+          <tbody><tr>
+              <td>linux_mpimpich</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5388&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master&jobName=linux&configuration=linux_mpimpich" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_mpiopenmpi</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5388&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master&jobName=linux&configuration=linux_mpiopenmpi" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_mpimpich</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5388&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master&jobName=osx&configuration=osx_mpimpich" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_mpiopenmpi</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5388&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master&jobName=osx&configuration=osx_mpiopenmpi" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_c_compilervs2015cxx_compilervs2015vc14</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5388&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2015cxx_compilervs2015vc14" alt="variant">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </details>
+    </td>
+  </tr>
+![ppc64le disabled](https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg)
+</table>
 
 Current release info
 ====================

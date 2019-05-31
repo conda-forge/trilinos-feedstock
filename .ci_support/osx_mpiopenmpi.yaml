@@ -1,7 +1,7 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
 boost_cpp:
-- 1.68.0
+- 1.70.0
 c_compiler:
 - clang
 c_compiler_version:
@@ -16,8 +16,8 @@ cxx_compiler_version:
 - '4'
 libblas:
 - 3.8 *netlib
-libcblas:
-- 3.8 *netlib
+liblapack:
+- 3.8.0 *netlib
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:

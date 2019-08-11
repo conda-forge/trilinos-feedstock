@@ -1,11 +1,11 @@
-{% set version = "12-14-1" %}
+{% set version = "12.14.1" %}
 
 package:
   name: trilinos
-  version: {{ version.replace("-", ".") }}
+  version: {{ version }}
 
 source:
-  url: https://github.com/trilinos/Trilinos/archive/trilinos-release-{{ version }}.tar.gz
+  url: https://github.com/trilinos/Trilinos/archive/trilinos-release-{{ version.replace(".", "-") }}.tar.gz
   sha256: 52a4406cca2241f5eea8e166c2950471dd9478ad6741cbb2a7fc8225814616f0
 
 build:

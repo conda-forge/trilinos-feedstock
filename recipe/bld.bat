@@ -20,7 +20,7 @@ cmake -LAH -G"NMake Makefiles" ^
     -DTrilinos_ENABLE_Zoltan:BOOL=ON ^
     -DTrilinos_ENABLE_ROL:BOOL=ON ^
     -DTrilinos_ENABLE_RTOp:BOOL=ON ^
-    -DTrilinos_ENABLE_Sacado:BOOL=ON ^
+    -DTrilinos_ENABLE_Sacado:BOOL=OFF ^
     -DTPL_BLAS_LIBRARIES=%LIBRARY_PREFIX:\=/%/lib/openblas.lib ^
     -DTPL_LAPACK_LIBRARIES=%LIBRARY_PREFIX:\=/%/lib/openblas.lib ^
     ..

@@ -38,7 +38,6 @@ cmake \
   -D Trilinos_ENABLE_Domi:BOOL=ON \
   -D Trilinos_ENABLE_Thyra:BOOL=ON \
   -D Trilinos_ENABLE_Xpetra:BOOL=ON \
-  -D Trilinos_ENABLE_OptiPack:BOOL=ON \
   -D Trilinos_ENABLE_Isorropia:BOOL=ON \
   -D Trilinos_ENABLE_Pliris:BOOL=ON \
   -D Trilinos_ENABLE_AztecOO:BOOL=ON \
@@ -74,6 +73,3 @@ cmake \
   $SRC_DIR
 
 make -j $CPU_COUNT install
-
-# workaround for 12.12.1 fixed in next release
-rm $PREFIX/lib/cmake/tribits/doc/developers_guide/TribitsBuildReference.html

@@ -9,7 +9,7 @@ Feedstock license: BSD 3-Clause
 
 Summary: Sandia's suite of HPC solvers and enabling technologies
 
-Fast, compiled object-oriented algorithms and enabling technologies for the solution of large-scale, complex multi-physics engineering and scientific problems.
+Fast, compiled object-oriented algorithms and enabling technologies that support the solution of large-scale, complex multi-physics engineering and scientific problems.
 
 Current build status
 ====================
@@ -20,13 +20,6 @@ Current build status
     <td>
       <a href="https://circleci.com/gh/conda-forge/trilinos-feedstock">
         <img alt="OSX" src="https://img.shields.io/circleci/project/github/conda-forge/trilinos-feedstock/master.svg?label=OSX">
-      </a>
-    </td>
-  </tr><tr>
-    <td>Appveyor</td>
-    <td>
-      <a href="https://ci.appveyor.com/project/conda-forge/trilinos-feedstock/branch/master">
-        <img alt="windows" src="https://img.shields.io/appveyor/ci/conda-forge/trilinos-feedstock/master.svg?label=Windows">
       </a>
     </td>
   </tr>
@@ -83,7 +76,12 @@ Current build status
       </details>
     </td>
   </tr>
-![ppc64le disabled](https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg)
+  <tr>
+    <td>Linux_ppc64le</td>
+    <td>
+      <img src="https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg" alt="ppc64le disabled">
+    </td>
+  </tr>
 </table>
 
 Current release info
@@ -129,7 +127,7 @@ A feedstock is made up of a conda recipe (the instructions on what and how to bu
 the package) and the necessary configurations for automatic building using freely
 available continuous integration services. Thanks to the awesome service provided by
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/)
-and [TravisCI](https://travis-ci.org/) it is possible to build and upload installable
+and [TravisCI](https://travis-ci.com/) it is possible to build and upload installable
 packages to the [conda-forge](https://anaconda.org/conda-forge)
 [Anaconda-Cloud](https://anaconda.org/) channel for Linux, Windows and OSX respectively.
 
@@ -178,6 +176,5 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
-* [@jschueller](https://github.com/jschueller/)
-* [@wfspotz](https://github.com/wfspotz/)
+* [@pyt-viper](https://github.com/pyt-viper/)
 

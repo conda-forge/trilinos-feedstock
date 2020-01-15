@@ -1,36 +1,38 @@
-{% set name = "Trilinos" %}
-{% set version = "12.10.1" %}
-{% set sha256 = "ea8ff573bb1f452f2585950cdabe7e2c84cb35013844c58dc878c66bd4245e06" %}
+{% set version = "12.12.1" %}
 
 package:
-  name: {{ name|lower }}
+  name: trilinos
   version: {{ version }}
 
 source:
-  fn: trilinos-{{ version }}-Source.tar.gz
-  url: http://trilinos.csbsju.edu/download/files/trilinos-{{ version }}-Source.tar.gz
-  sha256: {{ sha256 }}
+  url: https://github.com/trilinos/Trilinos/archive/trilinos-release-12-12-1.tar.gz
+  sha256: 5474c5329c6309224a7e1726cf6f0d855025b2042959e4e2be2748bd6bb49e18
 
 build:
-  number: 1
-  skip: true  # [win]
+  number: 1006
+  skip: true  # [win and vc!=14]
 
 requirements:
   build:
     - cmake >=2.8.11
-    - toolchain
-    - openmpi
-    - openblas 0.2.19|0.2.19.*
-
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - libblas
+    - liblapack
+    - {{ mpi }}  # [unix]
+    - boost-cpp
   run:
-    - openmpi
-    - openblas 0.2.19|0.2.19.*
+    - {{ mpi }}  # [unix]
+    - boost-cpp
 
 test:
   commands:
-    - test -f $PREFIX/include/TeuchosCore_ConfigDefs.hpp
+    - test -f $PREFIX/include/TeuchosCore_ConfigDefs.hpp        # [unix]
     - test -f $PREFIX/lib/libteuchoscore.{{ version }}.dylib    # [osx]
     - test -f $PREFIX/lib/libteuchoscore.so.{{ version }}       # [linux]
+    - if not exist %PREFIX%\\Library\\include\\TeuchosCore_ConfigDefs.hpp exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\lib\\teuchoscore.lib exit 1  # [win]
 
 about:
   home: https://trilinos.org

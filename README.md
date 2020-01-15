@@ -178,6 +178,5 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
-* [@jschueller](https://github.com/jschueller/)
 * [@wfspotz](https://github.com/wfspotz/)
-
+* [@pyt-viper](https://github.com/pyt-viper/)

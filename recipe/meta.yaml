@@ -1,20 +1,20 @@
-{% set version = "12.12.1" %}
+{% set version = "12.18.1" %}
 
 package:
   name: trilinos
   version: {{ version }}
 
 source:
-  url: https://github.com/trilinos/Trilinos/archive/trilinos-release-12-12-1.tar.gz
-  sha256: 5474c5329c6309224a7e1726cf6f0d855025b2042959e4e2be2748bd6bb49e18
+  url: https://github.com/trilinos/Trilinos/archive/trilinos-release-{{ version | replace('.', '-') }}.tar.gz
+  sha256: 7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf
 
 build:
-  number: 1006
-  skip: true  # [win and vc!=14]
+  number: 0
+  skip: true  # [win]
 
 requirements:
   build:
-    - cmake >=2.8.11
+    - cmake >=3.10.0
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
@@ -25,6 +25,8 @@ requirements:
   run:
     - {{ mpi }}  # [unix]
     - boost-cpp
+  run_constrained:
+    - pytrilinos ==999999999
 
 test:
   commands:
@@ -43,10 +45,10 @@ about:
     Sandia's suite of HPC solvers and enabling technologies
   description:
     Fast, compiled object-oriented algorithms and enabling
-    technologies for the solution of large-scale, complex
-    multi-physics engineering and scientific problems.
+    technologies that support the solution of large-scale,
+    complex multi-physics engineering and scientific problems.
   dev_url: https://github.com/trilinos/Trilinos
 
 extra:
   recipe-maintainers:
-    - wfspotz
+    - pyt-viper

@@ -9,8 +9,8 @@ source:
   sha256: 5474c5329c6309224a7e1726cf6f0d855025b2042959e4e2be2748bd6bb49e18
 
 build:
-  number: 1006
-  skip: true  # [win and vc!=14]
+  number: 1007
+  skip: true  # [win]
 
 requirements:
   build:
@@ -50,3 +50,4 @@ about:
 extra:
   recipe-maintainers:
     - wfspotz
+    - pyt-viper

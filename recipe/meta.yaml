@@ -25,6 +25,8 @@ requirements:
   run:
     - {{ mpi }}  # [unix]
     - boost-cpp
+  run_constrained:
+    - pytrilinos ==999999999
 
 test:
   commands:

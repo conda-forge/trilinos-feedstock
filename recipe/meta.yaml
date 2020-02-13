@@ -9,7 +9,7 @@ source:
   sha256: 7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
@@ -22,9 +22,11 @@ requirements:
     - liblapack
     - {{ mpi }}  # [unix]
     - boost-cpp
+    - scikit-umfpack
   run:
     - {{ mpi }}  # [unix]
     - boost-cpp
+    - scikit-umfpack
   run_constrained:
     - pytrilinos ==999999999
 

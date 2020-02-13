@@ -43,6 +43,7 @@ cmake \
   -D Trilinos_ENABLE_AztecOO:BOOL=ON \
   -D Trilinos_ENABLE_Galeri:BOOL=ON \
   -D Trilinos_ENABLE_Amesos:BOOL=ON \
+  -D TPL_ENABLE_UMFPACK:BOOL=ON \
   -D Trilinos_ENABLE_Pamgen:BOOL=ON \
   -D Trilinos_ENABLE_Zoltan2:BOOL=ON \
   -D Trilinos_ENABLE_Ifpack:BOOL=ON \

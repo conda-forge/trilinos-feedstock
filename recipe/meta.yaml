@@ -26,7 +26,7 @@ requirements:
     - netcdf-cxx4
     - libmatio
     - xorg-libx11
-    - hdf5
+    - hdf5 * mpi_{{ mpi }}_*
   run:
     - {{ mpi }}  # [unix]
     - boost-cpp

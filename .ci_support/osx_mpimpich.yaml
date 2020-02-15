@@ -18,12 +18,20 @@ libblas:
 - 3.8 *netlib
 liblapack:
 - 3.8.0 *netlib
+libmatio:
+- '1.5'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
 - '10.9'
 mpi:
 - mpich
+netcdf_cxx4:
+- '4.3'
 pin_run_as_build:
   boost-cpp:
     max_pin: x.x.x
+  libmatio:
+    max_pin: x.x
+  netcdf-cxx4:
+    max_pin: x.x

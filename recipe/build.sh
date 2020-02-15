@@ -51,7 +51,7 @@ cmake \
   -D Trilinos_ENABLE_Belos:BOOL=ON \
   -D Trilinos_ENABLE_ShyLU:BOOL=ON \
   -D Trilinos_ENABLE_Amesos2:BOOL=ON \
-  -D Trilinos_ENABLE_SEACAS:BOOL=OFF \
+  -D Trilinos_ENABLE_SEACAS:BOOL=ON \
   -D Trilinos_ENABLE_Komplex:BOOL=ON \
   -D Trilinos_ENABLE_Anasazi:BOOL=ON \
   -D Trilinos_ENABLE_Ifpack2:BOOL=ON \

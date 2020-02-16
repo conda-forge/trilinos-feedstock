@@ -22,12 +22,8 @@ libmatio:
 - '1.5'
 mpi:
 - mpich
-netcdf_cxx4:
-- '4.3'
 pin_run_as_build:
   boost-cpp:
     max_pin: x.x.x
   libmatio:
-    max_pin: x.x
-  netcdf-cxx4:
     max_pin: x.x

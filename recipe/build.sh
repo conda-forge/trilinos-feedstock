@@ -62,7 +62,7 @@ cmake \
   -D Trilinos_ENABLE_FEI:BOOL=ON \
   -D Trilinos_ENABLE_Teko:BOOL=ON \
   -D Trilinos_ENABLE_Intrepid:BOOL=ON \
-  -D Trilinos_ENABLE_STK:BOOL=OFF \
+  -D Trilinos_ENABLE_STK:BOOL=ON \
   -D Trilinos_ENABLE_Phalanx:BOOL=ON \
   -D Trilinos_ENABLE_NOX:BOOL=ON \
   -D NOX_ENABLE_LOCA:BOOL=ON \

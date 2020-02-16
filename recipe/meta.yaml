@@ -20,17 +20,16 @@ requirements:
   host:
     - libblas
     - liblapack
-    - {{ mpi }}  # [unix]
     - boost-cpp
     - scikit-umfpack
-    - netcdf-cxx4
     - libmatio
     - xorg-libx11
-    - hdf5 * mpi_{{ mpi }}_*
+    - {{ mpi }}                      # [unix]
+    - netcdf-cxx4 * mpi_{{ mpi }}_*  # [unix]
+    - hdf5 * mpi_{{ mpi }}_*         # [unix]
   run:
-    - {{ mpi }}  # [unix]
+    - {{ mpi }}                      # [unix]
     - boost-cpp
-    - scikit-umfpack
   run_constrained:
     - pytrilinos ==999999999
 

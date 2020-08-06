@@ -5,7 +5,7 @@ boost_cpp:
 c_compiler:
 - clang
 c_compiler_version:
-- '9'
+- '10'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -13,7 +13,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '9'
+- '10'
 libblas:
 - 3.8 *netlib
 liblapack:
@@ -35,3 +35,5 @@ pin_run_as_build:
     max_pin: x.x
   netcdf-cxx4:
     max_pin: x.x
+target_platform:
+- osx-64

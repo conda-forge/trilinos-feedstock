@@ -5,12 +5,13 @@
 version: 2
 
 jobs:
-  build_osx_mpimpich:
+  build_osx_64_mpimpich:
     working_directory: ~/test
     macos:
       xcode: "9.0"
     environment:
-      - CONFIG: "osx_mpimpich"
+      - CONFIG: "osx_64_mpimpich"
+      - UPLOAD_PACKAGES: "True"
     steps:
       - checkout
       - run:
@@ -22,13 +23,15 @@ jobs:
           # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
           command: |
             export CI=circle
-            ./.circleci/run_osx_build.sh
-  build_osx_mpiopenmpi:
+            export FEEDSTOCK_NAME=$(basename ${CIRCLE_PROJECT_REPONAME})
+            ./.scripts/run_osx_build.sh
+  build_osx_64_mpiopenmpi:
     working_directory: ~/test
     macos:
       xcode: "9.0"
     environment:
-      - CONFIG: "osx_mpiopenmpi"
+      - CONFIG: "osx_64_mpiopenmpi"
+      - UPLOAD_PACKAGES: "True"
     steps:
       - checkout
       - run:
@@ -40,11 +43,12 @@ jobs:
           # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
           command: |
             export CI=circle
-            ./.circleci/run_osx_build.sh
+            export FEEDSTOCK_NAME=$(basename ${CIRCLE_PROJECT_REPONAME})
+            ./.scripts/run_osx_build.sh
 
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - build_osx_mpimpich
-      - build_osx_mpiopenmpi
+      - build_osx_64_mpimpich
+      - build_osx_64_mpiopenmpi

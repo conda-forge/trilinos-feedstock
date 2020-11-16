@@ -5,9 +5,11 @@ Home: https://trilinos.org
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/trilinos-feedstock/blob/master/LICENSE.txt)
 
 Summary: Sandia's suite of HPC solvers and enabling technologies
+
+Development: https://github.com/trilinos/Trilinos
 
 Fast, compiled object-oriented algorithms and enabling technologies that support the solution of large-scale, complex multi-physics engineering and scientific problems.
 

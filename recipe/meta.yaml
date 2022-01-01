@@ -1,4 +1,4 @@
-{% set version = "12.18.1" %}
+{% set version = "13.2.0" %}
 
 package:
   name: trilinos
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://github.com/trilinos/Trilinos/archive/trilinos-release-{{ version | replace('.', '-') }}.tar.gz
-  sha256: 7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf
+  sha256: 0ddb47784ba7b8a6b9a07a4822b33be508feb4ccd54301b2a5d10c9e54524b90
 
 build:
-  number: 4
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -47,12 +47,8 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary:
-    Sandia's suite of HPC solvers and enabling technologies
-  description:
-    Fast, compiled object-oriented algorithms and enabling
-    technologies that support the solution of large-scale,
-    complex multi-physics engineering and scientific problems.
+  summary: Sandia's suite of HPC solvers and enabling technologies
+  description: Fast, compiled object-oriented algorithms and enabling technologies that support the solution of large-scale, complex multi-physics engineering and scientific problems.
   dev_url: https://github.com/trilinos/Trilinos
 
 extra:

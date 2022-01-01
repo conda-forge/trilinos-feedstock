@@ -5,9 +5,11 @@ Home: https://trilinos.org
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/trilinos-feedstock/blob/master/LICENSE.txt)
 
 Summary: Sandia's suite of HPC solvers and enabling technologies
+
+Development: https://github.com/trilinos/Trilinos
 
 Fast, compiled object-oriented algorithms and enabling technologies that support the solution of large-scale, complex multi-physics engineering and scientific problems.
 
@@ -36,59 +38,31 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_boost_cpp1.72.0mpimpich</td>
+              <td>linux_64_mpimpich</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5388&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master&jobName=linux&configuration=linux_64_boost_cpp1.72.0mpimpich" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master&jobName=linux&configuration=linux_64_mpimpich" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_boost_cpp1.72.0mpiopenmpi</td>
+              <td>linux_64_mpiopenmpi</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5388&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master&jobName=linux&configuration=linux_64_boost_cpp1.72.0mpiopenmpi" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master&jobName=linux&configuration=linux_64_mpiopenmpi" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_boost_cpp1.74.0mpimpich</td>
+              <td>osx_64_mpimpich</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5388&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master&jobName=linux&configuration=linux_64_boost_cpp1.74.0mpimpich" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpimpich" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_boost_cpp1.74.0mpiopenmpi</td>
+              <td>osx_64_mpiopenmpi</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5388&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master&jobName=linux&configuration=linux_64_boost_cpp1.74.0mpiopenmpi" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_boost_cpp1.72.0mpimpich</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5388&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master&jobName=osx&configuration=osx_64_boost_cpp1.72.0mpimpich" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_boost_cpp1.72.0mpiopenmpi</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5388&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master&jobName=osx&configuration=osx_64_boost_cpp1.72.0mpiopenmpi" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_boost_cpp1.74.0mpimpich</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5388&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master&jobName=osx&configuration=osx_64_boost_cpp1.74.0mpimpich" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_boost_cpp1.74.0mpiopenmpi</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5388&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master&jobName=osx&configuration=osx_64_boost_cpp1.74.0mpiopenmpi" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/trilinos-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpiopenmpi" alt="variant">
                 </a>
               </td>
             </tr>
@@ -113,6 +87,7 @@ Installing `trilinos` from the `conda-forge` channel can be achieved by adding `
 
 ```
 conda config --add channels conda-forge
+conda config --set channel_priority strict
 ```
 
 Once the `conda-forge` channel has been enabled, `trilinos` can be installed with:
@@ -131,7 +106,8 @@ conda search trilinos --channel conda-forge
 About conda-forge
 =================
 
-[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](http://numfocus.org)
+[![Powered by
+NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](https://numfocus.org)
 
 conda-forge is a community-led conda channel of installable packages.
 In order to provide high-quality builds, the process has been automated into the
@@ -183,9 +159,9 @@ build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:
  * If the version of a package **is not** being increased, please add or increase
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string).
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string).
  * If the version of a package **is** being increased, please remember to return
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string)
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string)
    back to 0.
 
 Feedstock Maintainers

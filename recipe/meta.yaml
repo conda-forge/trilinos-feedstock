@@ -17,6 +17,7 @@ requirements:
     - cmake >=3.10.0
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - make  # [unix]
   host:
     - libblas
     - liblapack

@@ -1,16 +1,16 @@
 # This file was generated automatically from conda-smithy. To update this configuration,
 # update the conda-forge.yml and/or the recipe/meta.yaml.
-# -*- mode: yaml -*-
+# -*- mode: jinja-yaml -*-
 
 version: 2
 
 jobs:
-  build_osx_64_boost_cpp1.72.0mpimpich:
+  build_osx_64_mpimpich:
     working_directory: ~/test
     macos:
-      xcode: "9.0"
+      xcode: "13.0.0"
     environment:
-      - CONFIG: "osx_64_boost_cpp1.72.0mpimpich"
+      - CONFIG: "osx_64_mpimpich"
       - UPLOAD_PACKAGES: "True"
     steps:
       - checkout
@@ -24,13 +24,18 @@ jobs:
           command: |
             export CI=circle
             export FEEDSTOCK_NAME=$(basename ${CIRCLE_PROJECT_REPONAME})
+            if [[ "${CIRCLE_PR_NUMBER:-}" == "" ]]; then
+              export IS_PR_BUILD="False"
+            else
+              export IS_PR_BUILD="True"
+            fi
             ./.scripts/run_osx_build.sh
-  build_osx_64_boost_cpp1.72.0mpiopenmpi:
+  build_osx_64_mpiopenmpi:
     working_directory: ~/test
     macos:
-      xcode: "9.0"
+      xcode: "13.0.0"
     environment:
-      - CONFIG: "osx_64_boost_cpp1.72.0mpiopenmpi"
+      - CONFIG: "osx_64_mpiopenmpi"
       - UPLOAD_PACKAGES: "True"
     steps:
       - checkout
@@ -44,53 +49,16 @@ jobs:
           command: |
             export CI=circle
             export FEEDSTOCK_NAME=$(basename ${CIRCLE_PROJECT_REPONAME})
-            ./.scripts/run_osx_build.sh
-  build_osx_64_boost_cpp1.74.0mpimpich:
-    working_directory: ~/test
-    macos:
-      xcode: "9.0"
-    environment:
-      - CONFIG: "osx_64_boost_cpp1.74.0mpimpich"
-      - UPLOAD_PACKAGES: "True"
-    steps:
-      - checkout
-      - run:
-          name: Fast finish outdated PRs and merge PRs
-          command: |
-            ./.circleci/fast_finish_ci_pr_build.sh
-            ./.circleci/checkout_merge_commit.sh
-      - run:
-          # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
-          command: |
-            export CI=circle
-            export FEEDSTOCK_NAME=$(basename ${CIRCLE_PROJECT_REPONAME})
-            ./.scripts/run_osx_build.sh
-  build_osx_64_boost_cpp1.74.0mpiopenmpi:
-    working_directory: ~/test
-    macos:
-      xcode: "9.0"
-    environment:
-      - CONFIG: "osx_64_boost_cpp1.74.0mpiopenmpi"
-      - UPLOAD_PACKAGES: "True"
-    steps:
-      - checkout
-      - run:
-          name: Fast finish outdated PRs and merge PRs
-          command: |
-            ./.circleci/fast_finish_ci_pr_build.sh
-            ./.circleci/checkout_merge_commit.sh
-      - run:
-          # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
-          command: |
-            export CI=circle
-            export FEEDSTOCK_NAME=$(basename ${CIRCLE_PROJECT_REPONAME})
+            if [[ "${CIRCLE_PR_NUMBER:-}" == "" ]]; then
+              export IS_PR_BUILD="False"
+            else
+              export IS_PR_BUILD="True"
+            fi
             ./.scripts/run_osx_build.sh
 
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - build_osx_64_boost_cpp1.72.0mpimpich
-      - build_osx_64_boost_cpp1.72.0mpiopenmpi
-      - build_osx_64_boost_cpp1.74.0mpimpich
-      - build_osx_64_boost_cpp1.74.0mpiopenmpi
+      - build_osx_64_mpimpich
+      - build_osx_64_mpiopenmpi

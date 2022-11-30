@@ -72,6 +72,7 @@ cmake \
   -D Trilinos_ENABLE_Piro:BOOL=ON \
   -D Trilinos_ENABLE_TrilinosCouplings:BOOL=ON \
   -D Trilinos_ENABLE_Pike:BOOL=ON \
+  -D Teuchos_ENABLE_COMPLEX=BOOL=ON
   $SRC_DIR
 
 make -j $CPU_COUNT install

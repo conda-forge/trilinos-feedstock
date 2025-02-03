@@ -19,7 +19,7 @@ cmake \
   -D MPI_BASE_DIR:PATH=$PREFIX \
   -D MPI_EXEC:FILEPATH=$PREFIX/bin/mpiexec \
   -D Trilinos_ENABLE_ALL_PACKAGES=ON \
-  -D Trilinos_ENABLE_TESTS=ON
+  -D Trilinos_ENABLE_TESTS=ON \
   $SRC_DIR
 
 make -j $CPU_COUNT install

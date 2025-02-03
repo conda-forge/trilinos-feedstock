@@ -17,6 +17,7 @@ requirements:
     - cmake >=3.10.0
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ compiler('fortran') }}
     - {{ stdlib("c") }}
     - make
   host:

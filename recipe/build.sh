@@ -19,7 +19,7 @@ cmake \
   -D MPI_BASE_DIR:PATH=$PREFIX \
   -D MPI_EXEC:FILEPATH=$PREFIX/bin/mpiexec \
   -D PYTHON_EXECUTABLE:FILEPATH=$PYTHON \
-  -D Trilinos_ENABLE_Fortran:BOOL=OFF \
+  -D Trilinos_ENABLE_Fortran:BOOL=ON \
   -D Trilinos_ENABLE_ALL_PACKAGES:BOOL=OFF \
   -D Trilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=OFF \
   -D Trilinos_ENABLE_TESTS:BOOL=OFF \
@@ -38,7 +38,7 @@ cmake \
   -D Trilinos_ENABLE_Domi:BOOL=ON \
   -D Trilinos_ENABLE_Thyra:BOOL=ON \
   -D Trilinos_ENABLE_Xpetra:BOOL=ON \
-  -D Trilinos_ENABLE_Isorropia:BOOL=ON \
+  -D Trilinos_ENABLE_Isorropia:BOOL=OFF \
   -D Trilinos_ENABLE_Pliris:BOOL=ON \
   -D Trilinos_ENABLE_AztecOO:BOOL=OFF \
   -D Trilinos_ENABLE_Galeri:BOOL=ON \

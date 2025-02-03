@@ -1,4 +1,4 @@
-{% set version = "12.18.1" %}
+{% set version = "16.0.0" %}
 
 package:
   name: trilinos

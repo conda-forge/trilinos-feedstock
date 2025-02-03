@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://github.com/trilinos/Trilinos/archive/trilinos-release-{{ version | replace('.', '-') }}.tar.gz
-  sha256: 7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf
+  sha256: 46bfc40419ed2aa2db38c144fb8e61d4aa8170eaa654a88d833ba6b92903f309
 
 build:
-  number: 4
+  number: 0
   skip: true  # [win]
 
 requirements:

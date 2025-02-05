@@ -20,6 +20,7 @@ cmake \
   -D MPI_EXEC:FILEPATH=$PREFIX/bin/mpiexec \
   -D Trilinos_ENABLE_ALL_PACKAGES=ON \
   -D Trilinos_ENABLE_TESTS=ON \
+  -D Trilinos_ENABLE_EXAMPLES:BOOL=OFF \
   -D Trilinos_ENABLE_SEACAS=OFF \
   $SRC_DIR
 

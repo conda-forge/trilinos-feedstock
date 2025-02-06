@@ -26,6 +26,9 @@ cmake \
   -D Trilinos_ENABLE_TESTS=OFF \
   -D Trilinos_ENABLE_EXAMPLES:BOOL=OFF \
   -D Trilinos_ENABLE_SEACAS=OFF \
+  -D Trilinos_ENABLE_EPETRA=OFF \
+  -D Trilinos_ENABLE_EPETRAEXT=OFF \
+  -D Trilinos_ENABLE_AzteCOO=OFF \
   $SRC_DIR
 
 make -j $CPU_COUNT install

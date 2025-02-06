@@ -29,6 +29,8 @@ requirements:
     - netcdf-cxx4
     - libmatio
     - xorg-libx11
+    - kokkos
+    - kokkos-kernels
     - hdf5 * mpi_{{ mpi }}_*
   run:
     - {{ mpi }}  # [unix]

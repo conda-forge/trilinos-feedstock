@@ -27,8 +27,22 @@ cmake \
   -D Trilinos_ENABLE_EXAMPLES:BOOL=OFF \
   -D Trilinos_ENABLE_SEACAS=OFF \
   -D Trilinos_ENABLE_EPETRA=OFF \
+  -D Trilinos_ENABLE_ISORROPIA=OFF \
+  -D Trilinos_ENABLE_Intrepid=OFF \
+  -D Trilinos_ENABLE_AMESOS=OFF \
+  -D Trilinos_ENABLE_ML=OFF \
+  -D Trilinos_ENABLE_IFpack=OFF \
+  -D Trilinos_ENABLE_Krino=OFF \
+  -D Trilinos_ENABLE_Percept=OFF \
+  -D Trilinos_ENABLE_STK=OFF \
+  -D Trilinos_ENABLE_Pytrilinos=OFF \
+  -D Trilinos_ENABLE_ShyLU_DDCore=OFF \
+  -D Trilinos_ENABLE_ShyLU_DD=OFF \
+  -D Trilinos_ENABLE_Triutils=OFF \
   -D Trilinos_ENABLE_EPETRAEXT=OFF \
   -D Trilinos_ENABLE_AzteCOO=OFF \
+  -D Trilinos_ENABLE_ThyraEpetraAdapters=OFF \
+  -D Trilinos_ENABLE_ThyraEpetraExtAdapters=OFF \
   $SRC_DIR
 
 make -j $CPU_COUNT install

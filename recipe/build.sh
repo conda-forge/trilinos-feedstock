@@ -1,8 +1,10 @@
 mkdir -p build
 cd build
 
+ENABLE_PIRO=ON
 if [ $(uname) == Darwin ]; then
     export CXXFLAGS="$CXXFLAGS -stdlib=libc++"
+    ENABLE_PIRO=OFF #Piro fails to compile on OSX
 fi
 
 export MPI_FLAGS="--allow-run-as-root"
@@ -25,6 +27,7 @@ cmake \
   -D Trilinos_ENABLE_ALL_PACKAGES=ON \
   -D Trilinos_ENABLE_TESTS=OFF \
   -D Trilinos_ENABLE_EXAMPLES:BOOL=OFF \
+  -D Trilinos_ENABLE_Piro=${ENABLE_PIRO} \
   -D Trilinos_ENABLE_SEACAS=OFF \
   -D Trilinos_ENABLE_EPETRA=OFF \
   -D Trilinos_ENABLE_ISORROPIA=OFF \

@@ -26,6 +26,7 @@ cmake \
   -D TPL_ENABLE_Kokkos:BOOL=ON \
   -D Kokkos_DIR=$PREFIX \
   -D Kokkos_ROOT=$PREFIX \
+  -D Tpetra_IGNORE_KOKKOS_COMPATIBILITY=ON \
   -D Trilinos_ENABLE_ALL_PACKAGES=ON \
   -D Trilinos_ENABLE_TESTS=OFF \
   -D Trilinos_ENABLE_EXAMPLES:BOOL=OFF \

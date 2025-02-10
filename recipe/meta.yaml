@@ -31,6 +31,7 @@ requirements:
     - xorg-libx11
     - kokkos
     - kokkos-kernels
+    - gtest
     - hdf5 * mpi_{{ mpi }}_*
   run:
     - {{ mpi }}  # [unix]

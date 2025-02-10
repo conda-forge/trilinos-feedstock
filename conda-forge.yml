@@ -4,3 +4,4 @@ github:
   tooling_branch_name: main
 conda_build:
   error_overlinking: true
+  pkg_format: 2

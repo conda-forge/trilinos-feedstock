@@ -26,6 +26,9 @@ cmake \
   -D TPL_ENABLE_Kokkos:BOOL=ON \
   -D Kokkos_DIR=$PREFIX \
   -D Kokkos_ROOT=$PREFIX \
+  -D TPL_ENABLE_KokkosKernels=$PREFIX \
+  -D KokkosKernels_ROOT=$PREFIX \
+  -D KokkosKernels_DIR=$PREFIX \
   -D Tpetra_IGNORE_KOKKOS_COMPATIBILITY=ON \
   -D Trilinos_ENABLE_OpenMP:BOOL=ON \
   -D Tpetra_INST_OPENMP:BOOL=ON \

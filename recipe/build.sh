@@ -1,8 +1,10 @@
 mkdir -p build
 cd build
 
+ENABLE_PIRO=ON
 if [ $(uname) == Darwin ]; then
     export CXXFLAGS="$CXXFLAGS -stdlib=libc++"
+    ENABLE_PIRO=OFF #Piro fails to compile on OSX
 fi
 
 export MPI_FLAGS="--allow-run-as-root"
@@ -20,58 +22,39 @@ cmake \
   -D MPI_EXEC:FILEPATH=$PREFIX/bin/mpiexec \
   -D PYTHON_EXECUTABLE:FILEPATH=$PYTHON \
   -D Trilinos_ENABLE_Fortran:BOOL=OFF \
-  -D Trilinos_ENABLE_ALL_PACKAGES:BOOL=OFF \
-  -D Trilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=OFF \
-  -D Trilinos_ENABLE_TESTS:BOOL=OFF \
-  -D Trilinos_ENABLE_EXAMPLES:BOOL=OFF \
-  -D Trilinos_ENABLE_Teuchos:BOOL=ON \
-  -D Trilinos_ENABLE_RTOp:BOOL=ON \
-  -D Trilinos_ENABLE_Sacado:BOOL=ON \
-  -D Trilinos_ENABLE_MiniTensor:BOOL=ON \
-  -D Trilinos_ENABLE_Epetra:BOOL=ON \
-  -D Trilinos_ENABLE_Zoltan:BOOL=ON \
-  -D Trilinos_ENABLE_Shards:BOOL=ON \
-  -D Trilinos_ENABLE_GlobiPack:BOOL=ON \
-  -D Trilinos_ENABLE_Triutils:BOOL=ON \
-  -D Trilinos_ENABLE_Tpetra:BOOL=ON \
-  -D Trilinos_ENABLE_EpetraExt:BOOL=ON \
-  -D Trilinos_ENABLE_Domi:BOOL=ON \
-  -D Trilinos_ENABLE_Thyra:BOOL=ON \
-  -D Trilinos_ENABLE_Xpetra:BOOL=ON \
-  -D Trilinos_ENABLE_Isorropia:BOOL=ON \
-  -D Trilinos_ENABLE_Pliris:BOOL=ON \
-  -D Trilinos_ENABLE_AztecOO:BOOL=ON \
-  -D Trilinos_ENABLE_Galeri:BOOL=ON \
-  -D Trilinos_ENABLE_Amesos:BOOL=ON \
-  -D TPL_ENABLE_UMFPACK:BOOL=ON \
-  -D Trilinos_ENABLE_Pamgen:BOOL=ON \
-  -D Trilinos_ENABLE_Zoltan2:BOOL=ON \
-  -D Trilinos_ENABLE_Ifpack:BOOL=ON \
-  -D Trilinos_ENABLE_ML:BOOL=ON \
-  -D Trilinos_ENABLE_Belos:BOOL=ON \
-  -D Trilinos_ENABLE_ShyLU:BOOL=ON \
-  -D Trilinos_ENABLE_Amesos2:BOOL=ON \
-  -D Trilinos_ENABLE_SEACAS:BOOL=ON \
   -D TPL_ENABLE_HDF5:BOOL=ON \
-  -D Trilinos_ENABLE_Komplex:BOOL=ON \
-  -D Trilinos_ENABLE_Anasazi:BOOL=ON \
-  -D Trilinos_ENABLE_Ifpack2:BOOL=ON \
-  -D Ifpack2_ENABLE_TESTS:BOOL=OFF \
-  -D Trilinos_ENABLE_Stratimikos:BOOL=ON \
-  -D Trilinos_ENABLE_FEI:BOOL=ON \
-  -D Trilinos_ENABLE_Teko:BOOL=ON \
-  -D Trilinos_ENABLE_Intrepid:BOOL=ON \
-  -D Trilinos_ENABLE_STK:BOOL=OFF \
-  -D Trilinos_ENABLE_Phalanx:BOOL=ON \
-  -D Trilinos_ENABLE_NOX:BOOL=ON \
-  -D NOX_ENABLE_LOCA:BOOL=ON \
-  -D Trilinos_ENABLE_MueLu:BOOL=ON \
-  -D Trilinos_ENABLE_Rythmos:BOOL=ON \
-  -D Trilinos_ENABLE_Stokhos:BOOL=ON \
-  -D Trilinos_ENABLE_ROL:BOOL=ON \
-  -D Trilinos_ENABLE_Piro:BOOL=ON \
-  -D Trilinos_ENABLE_TrilinosCouplings:BOOL=ON \
-  -D Trilinos_ENABLE_Pike:BOOL=ON \
+  -D TPL_ENABLE_Kokkos:BOOL=ON \
+  -D Kokkos_DIR=$PREFIX \
+  -D Kokkos_ROOT=$PREFIX \
+  -D TPL_ENABLE_KokkosKernels=ON \
+  -D KokkosKernels_ROOT=$PREFIX \
+  -D KokkosKernels_DIR=$PREFIX \
+  -D Tpetra_IGNORE_KOKKOS_COMPATIBILITY=ON \
+  -D Trilinos_ENABLE_OpenMP:BOOL=ON \
+  -D Tpetra_INST_OPENMP:BOOL=ON \
+  -D Tpetra_INST_SERIAL:BOOL=ON \
+  -D Trilinos_ENABLE_ALL_PACKAGES=ON \
+  -D Trilinos_ENABLE_TESTS=OFF \
+  -D Trilinos_ENABLE_EXAMPLES:BOOL=OFF \
+  -D Trilinos_ENABLE_Piro=${ENABLE_PIRO} \
+  -D Trilinos_ENABLE_SEACAS=OFF \
+  -D Trilinos_ENABLE_EPETRA=OFF \
+  -D Trilinos_ENABLE_ISORROPIA=OFF \
+  -D Trilinos_ENABLE_Intrepid=OFF \
+  -D Trilinos_ENABLE_AMESOS=OFF \
+  -D Trilinos_ENABLE_ML=OFF \
+  -D Trilinos_ENABLE_IFpack=OFF \
+  -D Trilinos_ENABLE_Krino=OFF \
+  -D Trilinos_ENABLE_Percept=OFF \
+  -D Trilinos_ENABLE_STK=OFF \
+  -D Trilinos_ENABLE_Pytrilinos=OFF \
+  -D Trilinos_ENABLE_ShyLU_DDCore=OFF \
+  -D Trilinos_ENABLE_ShyLU_DD=OFF \
+  -D Trilinos_ENABLE_Triutils=OFF \
+  -D Trilinos_ENABLE_EPETRAEXT=OFF \
+  -D Trilinos_ENABLE_AzteCOO=OFF \
+  -D Trilinos_ENABLE_ThyraEpetraAdapters=OFF \
+  -D Trilinos_ENABLE_ThyraEpetraExtAdapters=OFF \
   $SRC_DIR
 
 make -j $CPU_COUNT install

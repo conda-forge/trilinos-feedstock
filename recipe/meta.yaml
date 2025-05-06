@@ -10,7 +10,7 @@ source:
 
 
 build:
-  number: 1
+  number: 3
   skip: true  # [win]
 
 requirements:
@@ -19,6 +19,7 @@ requirements:
     - ninja
     - make
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
   host:

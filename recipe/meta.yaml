@@ -17,11 +17,12 @@ requirements:
     - cmake >=3.10.0
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
   host:
     - libblas
     - liblapack
     - {{ mpi }}  # [unix]
-    - boost-cpp
+    - libboost-devel
     - scikit-umfpack
     - netcdf-cxx4
     - libmatio
@@ -29,7 +30,7 @@ requirements:
     - hdf5 * mpi_{{ mpi }}_*
   run:
     - {{ mpi }}  # [unix]
-    - boost-cpp
+    - libboost-devel
     - scikit-umfpack
   run_constrained:
     - pytrilinos ==999999999

@@ -19,6 +19,7 @@ cmake \
   -D MPI_BASE_DIR:PATH=$PREFIX \
   -D MPI_EXEC:FILEPATH=$PREFIX/bin/mpiexec \
   -D PYTHON_EXECUTABLE:FILEPATH=$PYTHON \
+  -D CMAKE_C_FLAGS="-Wno-implicit-function-declaration" \
   -D Trilinos_ENABLE_Fortran:BOOL=OFF \
   -D Trilinos_ENABLE_ALL_PACKAGES:BOOL=OFF \
   -D Trilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=OFF \

@@ -1,4 +1,4 @@
-{% set version = "12.18.1" %}
+{% set version = "15.1.1" %}
 
 package:
   name: trilinos
@@ -6,10 +6,11 @@ package:
 
 source:
   url: https://github.com/trilinos/Trilinos/archive/trilinos-release-{{ version | replace('.', '-') }}.tar.gz
-  sha256: 7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf
+  sha256: 2108d633d2208ed261d09b2d6b2fbae7a9cdc455dd963c9c94412d38d8aaefe4
+ 
 
 build:
-  number: 4
+  number: 0
   skip: true  # [win]
 
 requirements:

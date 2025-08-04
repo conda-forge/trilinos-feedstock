@@ -22,6 +22,8 @@ cmake -G Ninja \
   -D MPI_EXEC:FILEPATH=$PREFIX/bin/mpiexec \
   -D PYTHON_EXECUTABLE:FILEPATH=$PYTHON \
   -D CMAKE_C_FLAGS="-Wno-implicit-function-declaration" \
+  -D Trilinos_ENABLE_Kokkos:BOOL=ON \
+  -D Kokkos_DIR:PATH="${PREFIX}/lib/cmake/Kokkos" \
   -D Trilinos_ENABLE_Fortran:BOOL=OFF \
   -D Trilinos_ENABLE_ALL_PACKAGES:BOOL=OFF \
   -D Trilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=OFF \

@@ -1,6 +1,8 @@
 mkdir -p build
 cd build
 
+export CMAKE_GENERATOR="Ninja"
+
 if [ $(uname) == Darwin ]; then
     export CXXFLAGS="$CXXFLAGS -stdlib=libc++"
 fi
@@ -11,7 +13,7 @@ if [ $(uname) == Linux ]; then
     export MPI_FLAGS="$MPI_FLAGS;-mca;plm;isolated"
 fi
 
-cmake \
+cmake -G Ninja \
   -D CMAKE_BUILD_TYPE:STRING=RELEASE \
   -D CMAKE_INSTALL_PREFIX:PATH=$PREFIX \
   -D BUILD_SHARED_LIBS:BOOL=ON \
@@ -75,4 +77,5 @@ cmake \
   -D Trilinos_ENABLE_Pike:BOOL=ON \
   $SRC_DIR
 
-make -j $CPU_COUNT install
+ninja -j $CPU_COUNT
+ninja install

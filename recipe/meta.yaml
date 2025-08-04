@@ -7,7 +7,7 @@ package:
 source:
   url: https://github.com/trilinos/Trilinos/archive/trilinos-release-{{ version | replace('.', '-') }}.tar.gz
   sha256: 2108d633d2208ed261d09b2d6b2fbae7a9cdc455dd963c9c94412d38d8aaefe4
- 
+
 
 build:
   number: 0
@@ -15,7 +15,8 @@ build:
 
 requirements:
   build:
-    - cmake >=3.10.0
+    - cmake >=3.23.0
+    - ninja
     - make
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}

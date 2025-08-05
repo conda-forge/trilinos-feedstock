@@ -31,14 +31,14 @@ requirements:
     - libmatio
     - xorg-libx11
     - hdf5 * mpi_{{ mpi }}_*
-    - kokkos  # [osx]
-    - kokkos-kernels  # [osx]
+    - kokkos
+    - kokkos-kernels
   run:
     - {{ mpi }}  # [unix]
     - libboost-devel
     - scikit-umfpack
-    - kokkos  # [osx]
-    - kokkos-kernels  # [osx]
+    - kokkos
+    - kokkos-kernels
   run_constrained:
     - pytrilinos ==999999999
 

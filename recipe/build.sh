@@ -16,14 +16,17 @@ fi
 cmake -G Ninja \
   -D CMAKE_BUILD_TYPE:STRING=RELEASE \
   -D CMAKE_INSTALL_PREFIX:PATH=$PREFIX \
+  -D CMAKE_PREFIX_PATH:PATH=$PREFIX \
   -D BUILD_SHARED_LIBS:BOOL=ON \
   -D TPL_ENABLE_MPI:BOOL=ON \
   -D MPI_BASE_DIR:PATH=$PREFIX \
   -D MPI_EXEC:FILEPATH=$PREFIX/bin/mpiexec \
   -D PYTHON_EXECUTABLE:FILEPATH=$PYTHON \
   -D CMAKE_C_FLAGS="-Wno-implicit-function-declaration" \
-  -D Trilinos_ENABLE_Kokkos:BOOL=ON \
+  -D TPL_ENABLE_Kokkos:BOOL=ON \
+  -D TPL_ENABLE_KokkosKernels:BOOL=ON \
   -D Kokkos_DIR:PATH="${PREFIX}/lib/cmake/Kokkos" \
+  -D KokkosKernels_DIR:PATH="${PREFIX}/lib/cmake/KokkosKernels" \
   -D Trilinos_ENABLE_Fortran:BOOL=OFF \
   -D Trilinos_ENABLE_ALL_PACKAGES:BOOL=OFF \
   -D Trilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=OFF \

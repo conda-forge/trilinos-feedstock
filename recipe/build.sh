@@ -3,8 +3,8 @@ cd build
 
 export CMAKE_GENERATOR="Ninja"
 
-if [ $(uname) == Darwin ]; then
-    export CXXFLAGS="$CXXFLAGS -stdlib=libc++"
+if [[ "${target_platform}" == osx-* ]]; then
+    export CXXFLAGS="${CXXFLAGS} -stdlib=libc++ -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
 
 export MPI_FLAGS="--allow-run-as-root"

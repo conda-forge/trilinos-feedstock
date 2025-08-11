@@ -27,6 +27,7 @@ cmake -G Ninja \
   -D TPL_ENABLE_KokkosKernels:BOOL=ON \
   -D Kokkos_DIR:PATH="${PREFIX}/lib/cmake/Kokkos" \
   -D KokkosKernels_DIR:PATH="${PREFIX}/lib/cmake/KokkosKernels" \
+  -D Trilinos_ENABLE_OpenMP:BOOL=ON \
   -D Trilinos_ENABLE_Fortran:BOOL=OFF \
   -D Trilinos_ENABLE_ALL_PACKAGES:BOOL=OFF \
   -D Trilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=OFF \

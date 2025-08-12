@@ -1,8 +1,10 @@
 mkdir -p build
 cd build
 
-if [ $(uname) == Darwin ]; then
-    export CXXFLAGS="$CXXFLAGS -stdlib=libc++"
+export CMAKE_GENERATOR="Ninja"
+
+if [[ "${target_platform}" == osx-* ]]; then
+    export CXXFLAGS="${CXXFLAGS} -stdlib=libc++ -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
 
 export MPI_FLAGS="--allow-run-as-root"
@@ -11,14 +13,21 @@ if [ $(uname) == Linux ]; then
     export MPI_FLAGS="$MPI_FLAGS;-mca;plm;isolated"
 fi
 
-cmake \
+cmake -G Ninja \
   -D CMAKE_BUILD_TYPE:STRING=RELEASE \
   -D CMAKE_INSTALL_PREFIX:PATH=$PREFIX \
+  -D CMAKE_PREFIX_PATH:PATH=$PREFIX \
   -D BUILD_SHARED_LIBS:BOOL=ON \
   -D TPL_ENABLE_MPI:BOOL=ON \
   -D MPI_BASE_DIR:PATH=$PREFIX \
   -D MPI_EXEC:FILEPATH=$PREFIX/bin/mpiexec \
   -D PYTHON_EXECUTABLE:FILEPATH=$PYTHON \
+  -D CMAKE_C_FLAGS="-Wno-implicit-function-declaration" \
+  -D TPL_ENABLE_Kokkos:BOOL=ON \
+  -D TPL_ENABLE_KokkosKernels:BOOL=ON \
+  -D Kokkos_DIR:PATH="${PREFIX}/lib/cmake/Kokkos" \
+  -D KokkosKernels_DIR:PATH="${PREFIX}/lib/cmake/KokkosKernels" \
+  -D Trilinos_ENABLE_OpenMP:BOOL=ON \
   -D Trilinos_ENABLE_Fortran:BOOL=OFF \
   -D Trilinos_ENABLE_ALL_PACKAGES:BOOL=OFF \
   -D Trilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=OFF \
@@ -74,4 +83,5 @@ cmake \
   -D Trilinos_ENABLE_Pike:BOOL=ON \
   $SRC_DIR
 
-make -j $CPU_COUNT install
+ninja -j $CPU_COUNT
+ninja install

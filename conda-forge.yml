@@ -1,4 +1,4 @@
-provider: {osx: circle, win: azure}
+provider: {osx: azure, win: azure}
 conda_forge_output_validation: true
 github:
   branch_name: main

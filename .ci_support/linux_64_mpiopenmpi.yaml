@@ -33,7 +33,7 @@ mpich:
 netcdf_cxx4:
 - '4.3'
 openmpi:
-- '4'
+- '5'
 pin_run_as_build:
   netcdf-cxx4:
     max_pin: x.x

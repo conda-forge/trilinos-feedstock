@@ -10,7 +10,7 @@ source:
 
 
 build:
-  number: 2
+  number: 3
   skip: true  # [win]
 
 requirements:
@@ -19,8 +19,8 @@ requirements:
     - ninja
     - make
     - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
+    - {{ compiler('cxx') }}
   host:
     - libblas
     - liblapack

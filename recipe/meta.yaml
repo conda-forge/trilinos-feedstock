@@ -1,4 +1,4 @@
-{% set version = "15.1.1" %}
+{% set version = "16.1.0" %}
 
 package:
   name: trilinos
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/trilinos/Trilinos/archive/trilinos-release-{{ version | replace('.', '-') }}.tar.gz
-  sha256: 2108d633d2208ed261d09b2d6b2fbae7a9cdc455dd963c9c94412d38d8aaefe4
+  sha256: e9651c88f581049457036cfc01b527a9d3903c257338eeeab942befd7452f23a
 
 
 build:
@@ -32,15 +32,15 @@ requirements:
     - xorg-libx11
     - hdf5 * mpi_{{ mpi }}_*
     # trilinos cmake expects specific kokkos/kokkos-kernels versions
-    - kokkos ==4.2.01
-    - kokkos-kernels ==4.2.01
+    - kokkos ==4.5.01
+    - kokkos-kernels ==4.5.01
   run:
     - {{ mpi }}  # [unix]
     - libboost-devel
     - scikit-umfpack
     # trilinos cmake expects specific kokkos/kokkos-kernels versions
-    - kokkos ==4.2.01
-    - kokkos-kernels ==4.2.01
+    - kokkos ==4.5.01
+    - kokkos-kernels ==4.5.01
   run_constrained:
     - pytrilinos ==999999999
 
@@ -57,12 +57,8 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary:
-    Sandia's suite of HPC solvers and enabling technologies
-  description:
-    Fast, compiled object-oriented algorithms and enabling
-    technologies that support the solution of large-scale,
-    complex multi-physics engineering and scientific problems.
+  summary: Sandia's suite of HPC solvers and enabling technologies
+  description: Fast, compiled object-oriented algorithms and enabling technologies that support the solution of large-scale, complex multi-physics engineering and scientific problems.
   dev_url: https://github.com/trilinos/Trilinos
 
 extra:

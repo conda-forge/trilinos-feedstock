@@ -27,7 +27,6 @@ requirements:
     - liblapack
     - {{ mpi }}  # [unix]
     - libboost-devel
-    - scikit-umfpack
     - suitesparse
     - netcdf-cxx4
     - libmatio
@@ -42,7 +41,6 @@ requirements:
   run:
     - {{ mpi }}  # [unix]
     - libboost-devel
-    - scikit-umfpack
     - suitesparse
     # trilinos cmake expects specific kokkos/kokkos-kernels versions
     - kokkos ==4.5.01

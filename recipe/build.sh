@@ -53,6 +53,8 @@ cmake -G Ninja \
   -D Trilinos_ENABLE_Galeri:BOOL=ON \
   -D Trilinos_ENABLE_Amesos:BOOL=ON \
   -D TPL_ENABLE_UMFPACK:BOOL=ON \
+  -D UMFPACK_LIBRARY_DIRS:PATH="${PREFIX}/lib/suitesparse" \
+  -D UMFPACK_INCLUDE_DIRS:PATH="${PREFIX}/include/suitesparse" \
   -D Trilinos_ENABLE_Pamgen:BOOL=ON \
   -D Trilinos_ENABLE_Zoltan2:BOOL=ON \
   -D Trilinos_ENABLE_Ifpack:BOOL=ON \

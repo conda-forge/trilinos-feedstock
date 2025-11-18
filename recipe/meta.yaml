@@ -1,7 +1,7 @@
 {% set version = "16.1.0" %}
 
 package:
-  name: trilinos
+  name: trilinos-split
   version: {{ version }}
 
 source:
@@ -50,14 +50,6 @@ requirements:
     - python
     - python_abi * *_cp313  # [py==313]
 
-test:
-  commands:
-    - test -f $PREFIX/include/TeuchosCore_ConfigDefs.hpp        # [unix]
-    - test -f $PREFIX/lib/libteuchoscore.{{ version }}.dylib    # [osx]
-    - test -f $PREFIX/lib/libteuchoscore.so.{{ version }}       # [linux]
-    - if not exist %PREFIX%\\Library\\include\\TeuchosCore_ConfigDefs.hpp exit 1  # [win]
-    - if not exist %PREFIX%\\Library\\lib\\teuchoscore.lib exit 1  # [win]
-
 outputs:
   - name: trilinos
     files:
@@ -65,22 +57,56 @@ outputs:
       - lib/libtrilinos*.so
       - include/**
       - lib/cmake/Trilinos/**
+    requirements:
+      host:
+        - {{ mpi }}
+      run:
+        - {{ mpi }}
     build:
       run_exports:
         - {{ pin_subpackage('trilinos', max_pin='x.x') }}
+    test:
+      commands:
+        - test -f $PREFIX/include/TeuchosCore_ConfigDefs.hpp        # [unix]
+        - test -f $PREFIX/lib/libteuchoscore.{{ version }}.dylib    # [osx]
+        - test -f $PREFIX/lib/libteuchoscore.so.{{ version }}       # [linux]
+        - if not exist %PREFIX%\\Library\\include\\TeuchosCore_ConfigDefs.hpp exit 1  # [win]
+        - if not exist %PREFIX%\\Library\\lib\\teuchoscore.lib exit 1  # [win]
   - name: pytrilinos
     requirements:
       host:
         - {{ pin_subpackage('trilinos', exact=True) }}
         - python
         - numpy
+        - swig
+        - {{ mpi }}
       run:
         - {{ pin_subpackage('trilinos', exact=True) }}
         - python
         - numpy
+        - {{ mpi }}
+        - mpi4py
     files:
       - lib/python*/site-packages/PyTrilinos/**
       - lib/libPyTrilinos*
+    test:
+      requires:
+        - cmake >=3.10.0
+        - mpi4py
+      imports:
+        - PyTrilinos.Teuchos
+        - PyTrilinos.Epetra
+        - PyTrilinos.TriUtils
+        - PyTrilinos.Tpetra
+        - PyTrilinos.EpetraExt
+        - PyTrilinos.Domi
+        - PyTrilinos.AztecOO
+        - PyTrilinos.Galeri
+        - PyTrilinos.Amesos
+        - PyTrilinos.IFPACK
+        - PyTrilinos.Komplex
+        - PyTrilinos.ML
+        - PyTrilinos.Anasazi
 
 about:
   home: https://trilinos.org

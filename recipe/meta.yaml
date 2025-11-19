@@ -52,11 +52,8 @@ requirements:
 
 outputs:
   - name: trilinos
-    files:
-      - lib/libtrilinos*.dylib
-      - lib/libtrilinos*.so
-      - include/**
-      - lib/cmake/Trilinos/**
+    script: build.sh  # [unix]
+    script: bld.bat  # [win]
     requirements:
       host:
         - {{ mpi }}
@@ -73,6 +70,8 @@ outputs:
         - if not exist %PREFIX%\\Library\\include\\TeuchosCore_ConfigDefs.hpp exit 1  # [win]
         - if not exist %PREFIX%\\Library\\lib\\teuchoscore.lib exit 1  # [win]
   - name: pytrilinos
+    script: build.sh  # [unix]
+    script: bld.bat  # [win]
     requirements:
       host:
         - {{ pin_subpackage('trilinos', exact=True) }}
@@ -86,9 +85,6 @@ outputs:
         - numpy
         - {{ mpi }}
         - mpi4py
-    files:
-      - lib/python*/site-packages/PyTrilinos/**
-      - lib/libPyTrilinos*
     test:
       requires:
         - cmake >=3.10.0

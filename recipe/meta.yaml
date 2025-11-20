@@ -13,52 +13,46 @@ build:
   number: 4
   skip: true  # [win]
 
-requirements:
-  build:
-    - cmake >=3.23.0
-    - ninja
-    - make
-    - {{ compiler('c') }}
-    - {{ stdlib("c") }}
-    - {{ compiler('cxx') }}
-    - numpy
-    - swig
-  host:
-    - libblas
-    - liblapack
-    - {{ mpi }}  # [unix]
-    - libboost-devel
-    - suitesparse
-    - netcdf-cxx4
-    - libmatio
-    - xorg-libx11
-    - hdf5 * mpi_{{ mpi }}_*
-    # trilinos cmake expects specific kokkos/kokkos-kernels versions
-    - kokkos ==4.5.01
-    - kokkos-kernels ==4.5.01
-    - numpy
-    - python {{ python }}
-    - python_abi * *_cp313  # [py==313]
-  run:
-    - {{ mpi }}  # [unix]
-    - libboost-devel
-    - suitesparse
-    # trilinos cmake expects specific kokkos/kokkos-kernels versions
-    - kokkos ==4.5.01
-    - kokkos-kernels ==4.5.01
-    - {{ pin_compatible('numpy') }}
-    - python
-    - python_abi * *_cp313  # [py==313]
-
 outputs:
   - name: trilinos
     script: build.sh  # [unix]
     script: bld.bat  # [win]
     requirements:
+      build:
+        - cmake >=3.23.0
+        - ninja
+        - make
+        - {{ compiler('c') }}
+        - {{ stdlib("c") }}
+        - {{ compiler('cxx') }}
+        - numpy
+        - swig
       host:
-        - {{ mpi }}
+        - libblas
+        - liblapack
+        - {{ mpi }}  # [unix]
+        - libboost-devel
+        - suitesparse
+        - netcdf-cxx4
+        - libmatio
+        - xorg-libx11
+        - hdf5 * mpi_{{ mpi }}_*
+        # trilinos cmake expects specific kokkos/kokkos-kernels versions
+        - kokkos ==4.5.01
+        - kokkos-kernels ==4.5.01
+        - numpy
+        - python {{ python }}
+        - python_abi * *_cp313  # [py==313]
       run:
-        - {{ mpi }}
+        - {{ mpi }}  # [unix]
+        - libboost-devel
+        - suitesparse
+        # trilinos cmake expects specific kokkos/kokkos-kernels versions
+        - kokkos ==4.5.01
+        - kokkos-kernels ==4.5.01
+        - {{ pin_compatible('numpy') }}
+        - python
+        - python_abi * *_cp313  # [py==313]
     build:
       run_exports:
         - {{ pin_subpackage('trilinos', max_pin='x.x') }}
@@ -72,18 +66,46 @@ outputs:
   - name: pytrilinos
     script: build.sh  # [unix]
     script: bld.bat  # [win]
-    requirements:
-      host:
-        - {{ pin_subpackage('trilinos', exact=True) }}
-        - python
+    requirements:  
+      build:
+        - cmake >=3.23.0
+        - ninja
+        - make
+        - {{ compiler('c') }}
+        - {{ stdlib("c") }}
+        - {{ compiler('cxx') }}
         - numpy
         - swig
-        - {{ mpi }}
-      run:
-        - {{ pin_subpackage('trilinos', exact=True) }}
-        - python
+      host:
+        - libblas
+        - liblapack
+        - {{ mpi }}  # [unix]
+        - libboost-devel
+        - suitesparse
+        - netcdf-cxx4
+        - libmatio
+        - xorg-libx11
+        - hdf5 * mpi_{{ mpi }}_*
+        # trilinos cmake expects specific kokkos/kokkos-kernels versions
+        - kokkos ==4.5.01
+        - kokkos-kernels ==4.5.01
         - numpy
-        - {{ mpi }}
+        - python {{ python }}
+        - python_abi * *_cp313  # [py==313]
+        - {{ pin_subpackage('trilinos', exact=True) }}
+        - swig
+      run:
+        - {{ mpi }}  # [unix]
+        - libboost-devel
+        - suitesparse
+        # trilinos cmake expects specific kokkos/kokkos-kernels versions
+        - kokkos ==4.5.01
+        - kokkos-kernels ==4.5.01
+        - {{ pin_compatible('numpy') }}
+        - python
+        - python_abi * *_cp313  # [py==313]
+        - {{ pin_subpackage('trilinos', exact=True) }}
+        - numpy
         - mpi4py
     test:
       requires:

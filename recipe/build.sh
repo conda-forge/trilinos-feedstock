@@ -89,19 +89,27 @@ if [[ $PKG_NAME == "trilinos" ]]; then
     -D Teuchos_ENABLE_COMPLEX:BOOL=ON \
     -D Trilinos_ENABLE_COMPLEX_DOUBLE:BOOL=ON \
     -D Trilinos_ENABLE_PyTrilinos:BOOL=OFF \
+    -D Trilinos_ENABLE_DEPRECATED_CODE_WARNINGS:BOOL=OFF \
     $SRC_DIR
 
   ninja -j $CPU_COUNT
   ninja install
 
+  # DEBUG:
+  # After trilinos output is built & installed into $PREFIX:
+  ls $PREFIX/include | grep Teuchos_config.h
+  ls $PREFIX/include | grep Teuchos_ConfigDefs.hpp
+  ls $PREFIX/include | grep XMLObjectImplem
+
+
 elif [[ $PKG_NAME == "pytrilinos" ]]; then
 
-  cmake \
+  cmake -G Ninja \
     -D Trilinos_DIR="$PREFIX/lib/cmake/Trilinos" \
     -D Trilinos_ENABLE_PyTrilinos:BOOL=ON \
     -D Teuchos_ENABLE_PYTHON=ON \
     -D Python3_EXECUTABLE="$PYTHON" \
-    -D TPLE_ENABLE_MPI:BOOL=ON \
+    -D TPL_ENABLE_MPI:BOOL=ON \
     $SRC_DIR
 
   ninja -j $CPU_COUNT

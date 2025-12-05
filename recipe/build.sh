@@ -89,6 +89,10 @@ cmake -G Ninja \
   -D Trilinos_ENABLE_PyTrilinos:BOOL=ON \
   -D Teuchos_ENABLE_PYTHON=ON \
   -D Trilinos_ENABLE_DEPRECATED_CODE_WARNINGS:BOOL=OFF \
+  -D PyTrilinos_ENABLE_Teuchos=ON \
+  -D PyTrilinos_ENABLE_Tpetra=ON \
+  -D PyTrilinos_ENABLE_Epetra=ON \
+  -D PyTrilinos_ENABLE_NOX=ON \
   $SRC_DIR
 
 ninja -j $CPU_COUNT

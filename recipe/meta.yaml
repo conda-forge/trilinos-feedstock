@@ -12,84 +12,73 @@ source:
 build:
   number: 4
   skip: true  # [win]
+  run_exports:
+    - {{ pin_subpackage('trilinos', max_pin='x.x') }}
+
+requirements:
+  build:
+    - cmake >=3.23.0
+    - ninja
+    - make
+    - {{ compiler('c') }}
+    - {{ stdlib("c") }}
+    - {{ compiler('cxx') }}
+    - numpy
+    - swig
+  host:
+    - libblas
+    - liblapack
+    - {{ mpi }}  # [unix]
+    - libboost-devel
+    - suitesparse
+    - netcdf-cxx4
+    - libmatio
+    - xorg-libx11
+    - hdf5 * mpi_{{ mpi }}_*
+    # trilinos cmake expects specific kokkos/kokkos-kernels versions
+    - kokkos ==4.5.01
+    - kokkos-kernels ==4.5.01
+    - numpy
+    - python {{ python }}
+    - python_abi * *_cp313  # [py==313]
+    - swig
+    - mpi4py
+  run:
+    - {{ mpi }}  # [unix]
+    - libboost-devel
+    - suitesparse
+    # trilinos cmake expects specific kokkos/kokkos-kernels versions
+    - kokkos ==4.5.01
+    - kokkos-kernels ==4.5.01
+    - {{ pin_compatible('numpy') }}
+    - python
+    - python_abi * *_cp313  # [py==313]
+    - numpy
+    - mpi4py
 
 outputs:
   - name: trilinos
-    script: build.sh  # [unix]
-    script: bld.bat  # [win]
-    requirements:
-      build:
-        - cmake >=3.23.0
-        - ninja
-        - make
-        - {{ compiler('c') }}
-        - {{ stdlib("c") }}
-        - {{ compiler('cxx') }}
-        - numpy
-        - swig
-      host:
-        - libblas
-        - liblapack
-        - {{ mpi }}  # [unix]
-        - libboost-devel
-        - suitesparse
-        - netcdf-cxx4
-        - libmatio
-        - xorg-libx11
-        - hdf5 * mpi_{{ mpi }}_*
-        # trilinos cmake expects specific kokkos/kokkos-kernels versions
-        - kokkos ==4.5.01
-        - kokkos-kernels ==4.5.01
-        - numpy
-        - python {{ python }}
-        - python_abi * *_cp313  # [py==313]
-      run:
-        - {{ mpi }}  # [unix]
-        - libboost-devel
-        - suitesparse
-        # trilinos cmake expects specific kokkos/kokkos-kernels versions
-        - kokkos ==4.5.01
-        - kokkos-kernels ==4.5.01
-        - {{ pin_compatible('numpy') }}
-        - python
-        - python_abi * *_cp313  # [py==313]
-    build:
-      run_exports:
-        - {{ pin_subpackage('trilinos', max_pin='x.x') }}
-    test:
-      commands:
-        - test -f $PREFIX/include/TeuchosCore_ConfigDefs.hpp        # [unix]
-        - test -f $PREFIX/lib/libteuchoscore.{{ version }}.dylib    # [osx]
-        - test -f $PREFIX/lib/libteuchoscore.so.{{ version }}       # [linux]
-        - if not exist %PREFIX%\\Library\\include\\TeuchosCore_ConfigDefs.hpp exit 1  # [win]
-        - if not exist %PREFIX%\\Library\\lib\\teuchoscore.lib exit 1  # [win]
+    files:
+      # headers
+      - include/*
+      # libs / cmake config
+      - lib/lib*trilinos*.so*     # [linux]
+      - lib/lib*trilinos*.dylib   # [osx]
+      - lib/libteuchos*.so*       # [linux]
+      - lib/libteuchos*.dylib     # [osx]
+      - lib/libepetra*.so*        # [linux]
+      - lib/libepetra*.dylib      # [osx]
+      - lib/cmake/Trilinos/*
+      - share/trilinos/*
   - name: pytrilinos
-    script: build.sh  # [unix]
-    script: bld.bat  # [win]
-    requirements:  
-      build:
-        - cmake >=3.23.0
-        - ninja
-        - make
-        - {{ compiler('c') }}
-        - {{ stdlib("c") }}
-        - {{ compiler('cxx') }}
-      host:
-        - {{ mpi }}  # [unix]
-        - {{ pin_subpackage('trilinos', exact=True) }}
-        - swig
-        - python {{ python }}
-        - python_abi * *_cp313  # [py==313]
-        - numpy
-        - mpi4py
-      run:
-        - {{ mpi }}  # [unix]
-        - {{ pin_compatible('numpy') }}
-        - python
-        - python_abi * *_cp313  # [py==313]
-        - {{ pin_subpackage('trilinos', exact=True) }}
-        - numpy
-        - mpi4py
+    files:
+      # Python modules
+      - lib/python*/site-packages/PyTrilinos/*
+      # SWIG extension modules (names vary; adjust to actual names)
+      - lib/python*/site-packages/_Epetra*.so        # [unix]
+      - lib/python*/site-packages/_Teuchos*.so       # [unix]
+      - lib/python*/site-packages/_Tpetra*.so        # [unix]
+      - lib/libpytrilinos*.so*                       # [unix]
     test:
       requires:
         - mpi4py

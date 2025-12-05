@@ -23,17 +23,13 @@ libboost_devel:
 liblapack:
 - 3.9.* *netlib
 libmatio:
-- 1.5.28
+- 1.5.29
 mpi:
 - mpich
-mpich:
-- '4'
 netcdf_cxx4:
 - '4.3'
 numpy:
 - '2'
-openmpi:
-- '5'
 pin_run_as_build:
   netcdf-cxx4:
     max_pin: x.x

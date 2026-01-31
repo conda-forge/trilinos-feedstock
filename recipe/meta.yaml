@@ -23,6 +23,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
+    - {{ compiler('fortran') }}
     - numpy
     - swig
   host:
@@ -31,6 +32,7 @@ requirements:
     - {{ mpi }}  # [unix]
     - libboost-devel
     - suitesparse
+    - libnetcdf
     - netcdf-cxx4
     - libmatio
     - xorg-libx11
@@ -50,6 +52,8 @@ requirements:
     # trilinos cmake expects specific kokkos/kokkos-kernels versions
     - kokkos ==4.5.01
     - kokkos-kernels ==4.5.01
+    - libnetcdf
+    - netcdf-cxx4
     - {{ pin_compatible('numpy') }}
     - python
     - python_abi * *_cp313  # [py==313]

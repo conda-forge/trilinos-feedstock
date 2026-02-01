@@ -13,7 +13,6 @@ if [ $(uname) == Linux ]; then
     export MPI_FLAGS="$MPI_FLAGS;-mca;plm;isolated"
 fi
 
-
 cmake -G Ninja \
   -D CMAKE_BUILD_TYPE:STRING=RELEASE \
   -D CMAKE_INSTALL_PREFIX:PATH=$PREFIX \
@@ -93,6 +92,7 @@ cmake -G Ninja \
   -D PyTrilinos_ENABLE_Tpetra=ON \
   -D PyTrilinos_ENABLE_Epetra=ON \
   -D PyTrilinos_ENABLE_NOX=ON \
+  -D PyTrilinos_SWIG_FLAGS:STRING="-I${SRC_DIR}/packages/teuchos/core/src;-I${SRC_DIR}/packages/teuchos/comm/src;-I${SRC_DIR}/packages/teuchos/parameterlist/src;-I${SRC_DIR}/packages/tpetra/core/src" \
   $SRC_DIR
 
 ninja -j $CPU_COUNT

@@ -63,26 +63,14 @@ requirements:
 outputs:
   - name: trilinos
     files:
-      # headers
       - include/*
-      # libs / cmake config
-      - lib/lib*trilinos*.so*     # [linux]
-      - lib/lib*trilinos*.dylib   # [osx]
-      - lib/libteuchos*.so*       # [linux]
-      - lib/libteuchos*.dylib     # [osx]
-      - lib/libepetra*.so*        # [linux]
-      - lib/libepetra*.dylib      # [osx]
+      - lib/lib*.so*              # [linux]
+      - lib/lib*.dylib            # [osx]
       - lib/cmake/Trilinos/*
       - share/trilinos/*
   - name: pytrilinos
     files:
-      # Python modules
-      - lib/python*/site-packages/PyTrilinos/*
-      # SWIG extension modules (names vary; adjust to actual names)
-      - lib/python*/site-packages/_Epetra*.so        # [unix]
-      - lib/python*/site-packages/_Teuchos*.so       # [unix]
-      - lib/python*/site-packages/_Tpetra*.so        # [unix]
-      - lib/libpytrilinos*.so*                       # [unix]
+      - lib/python*/site-packages/PyTrilinos/**
     test:
       requires:
         - mpi4py

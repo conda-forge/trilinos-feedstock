@@ -88,9 +88,22 @@ cmake -G Ninja \
   -D Trilinos_ENABLE_PyTrilinos:BOOL=ON \
   -D Teuchos_ENABLE_PYTHON=ON \
   -D Trilinos_ENABLE_DEPRECATED_CODE_WARNINGS:BOOL=OFF \
+  -D TPL_ENABLE_MPI4PY:BOOL=ON \
   -D PyTrilinos_ENABLE_Teuchos=ON \
   -D PyTrilinos_ENABLE_Tpetra=ON \
   -D PyTrilinos_ENABLE_Epetra=ON \
+  -D PyTrilinos_ENABLE_Triutils=ON \
+  -D PyTrilinos_ENABLE_Domi=ON \
+  -D PyTrilinos_ENABLE_EpetraExt=ON \
+  -D PyTrilinos_ENABLE_Isorropia=ON \
+  -D PyTrilinos_ENABLE_Pliris=ON \
+  -D PyTrilinos_ENABLE_AztecOO=ON \
+  -D PyTrilinos_ENABLE_Galeri=ON \
+  -D PyTrilinos_ENABLE_Amesos=ON \
+  -D PyTrilinos_ENABLE_Ifpack=ON \
+  -D PyTrilinos_ENABLE_Komplex=ON \
+  -D PyTrilinos_ENABLE_Anasazi=ON \
+  -D PyTrilinos_ENABLE_ML=ON \
   -D PyTrilinos_ENABLE_NOX=ON \
   -D PyTrilinos_SWIG_FLAGS:STRING="-I${SRC_DIR}/packages/teuchos/core/src;-I${SRC_DIR}/packages/teuchos/comm/src;-I${SRC_DIR}/packages/teuchos/parameterlist/src;-I${SRC_DIR}/packages/tpetra/core/src" \
   $SRC_DIR

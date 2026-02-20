@@ -1,0 +1,90 @@
+--- a/packages/PyTrilinos/cmake/UseSWIG.cmake	2026-02-19 08:24:25
++++ b/packages/PyTrilinos/cmake/UseSWIG.cmake	2026-02-19 14:10:18
+@@ -83,6 +83,65 @@
+ # April, 2009; February, 2010.
+ 
+ SET(SWIG_CXX_EXTENSION "cpp")
++
++# Helper function: recursively collect include directories from a target
++# and all of its linked dependencies. This is necessary because modern
++# TriBITS propagates include directories via target_link_libraries(PUBLIC)
++# and target_include_directories(PUBLIC) using INTERFACE_INCLUDE_DIRECTORIES,
++# which are not visible to GET_DIRECTORY_PROPERTY(INCLUDE_DIRECTORIES).
++# SWIG's ADD_CUSTOM_COMMAND needs these directories as -I flags.
++#
++# Results are accumulated in the global properties:
++#   _SWIG_COLLECTED_INCLUDE_DIRS  - the collected include directories
++#   _SWIG_VISITED_TARGETS         - targets already visited (cycle prevention)
++FUNCTION(_SWIG_COLLECT_TARGET_INCLUDE_DIRS _target)
++  # Avoid infinite recursion on circular dependencies
++  GET_PROPERTY(_visited GLOBAL PROPERTY _SWIG_VISITED_TARGETS)
++  LIST(FIND _visited "${_target}" _found)
++  IF(NOT _found EQUAL -1)
++    RETURN()
++  ENDIF()
++  SET_PROPERTY(GLOBAL APPEND PROPERTY _SWIG_VISITED_TARGETS "${_target}")
++
++  IF(NOT TARGET ${_target})
++    RETURN()
++  ENDIF()
++
++  # Collect INCLUDE_DIRECTORIES (set directly on the target)
++  GET_TARGET_PROPERTY(_direct_incs ${_target} INCLUDE_DIRECTORIES)
++  IF(_direct_incs)
++    FOREACH(_inc IN LISTS _direct_incs)
++      STRING(REGEX REPLACE "^\\$<BUILD_INTERFACE:(.+)>$" "\\1" _inc_clean "${_inc}")
++      IF(NOT "${_inc_clean}" MATCHES "^\\$<")
++        SET_PROPERTY(GLOBAL APPEND PROPERTY _SWIG_COLLECTED_INCLUDE_DIRS "${_inc_clean}")
++      ENDIF()
++    ENDFOREACH()
++  ENDIF()
++
++  # Collect INTERFACE_INCLUDE_DIRECTORIES (propagated to dependents)
++  GET_TARGET_PROPERTY(_iface_incs ${_target} INTERFACE_INCLUDE_DIRECTORIES)
++  IF(_iface_incs)
++    FOREACH(_inc IN LISTS _iface_incs)
++      STRING(REGEX REPLACE "^\\$<BUILD_INTERFACE:(.+)>$" "\\1" _inc_clean "${_inc}")
++      IF(NOT "${_inc_clean}" MATCHES "^\\$<")
++        SET_PROPERTY(GLOBAL APPEND PROPERTY _SWIG_COLLECTED_INCLUDE_DIRS "${_inc_clean}")
++      ENDIF()
++    ENDFOREACH()
++  ENDIF()
++
++  # Recurse into LINK_LIBRARIES and INTERFACE_LINK_LIBRARIES
++  FOREACH(_prop LINK_LIBRARIES INTERFACE_LINK_LIBRARIES)
++    GET_TARGET_PROPERTY(_link_libs ${_target} ${_prop})
++    IF(_link_libs)
++      FOREACH(_lib IN LISTS _link_libs)
++        IF(TARGET ${_lib})
++          _SWIG_COLLECT_TARGET_INCLUDE_DIRS(${_lib})
++        ENDIF()
++      ENDFOREACH()
++    ENDIF()
++  ENDFOREACH()
++ENDFUNCTION()
++
+ SET(SWIG_EXTRA_LIBRARIES "")
+ 
+ SET(SWIG_PYTHON_EXTRA_FILE_EXTENSION "py")
+@@ -242,6 +301,21 @@
+   ENDIF(swig_source_file_cplusplus)
+ 
+   GET_DIRECTORY_PROPERTY(cmake_include_directories INCLUDE_DIRECTORIES)
++  # Also get transitive include directories from the pytrilinos target.
++  # Modern TriBITS propagates upstream package include directories via
++  # target_include_directories() / INTERFACE_INCLUDE_DIRECTORIES, which are
++  # not visible to GET_DIRECTORY_PROPERTY(INCLUDE_DIRECTORIES). SWIG needs
++  # these directories to find headers from Teuchos, Epetra, Tpetra, etc.
++  IF(TARGET pytrilinos)
++    SET_PROPERTY(GLOBAL PROPERTY _SWIG_COLLECTED_INCLUDE_DIRS "")
++    SET_PROPERTY(GLOBAL PROPERTY _SWIG_VISITED_TARGETS "")
++    _SWIG_COLLECT_TARGET_INCLUDE_DIRS(pytrilinos)
++    GET_PROPERTY(_swig_transitive_incs GLOBAL PROPERTY _SWIG_COLLECTED_INCLUDE_DIRS)
++    IF(_swig_transitive_incs)
++      LIST(APPEND cmake_include_directories ${_swig_transitive_incs})
++      LIST(REMOVE_DUPLICATES cmake_include_directories)
++    ENDIF()
++  ENDIF()
+   SET(swig_include_dirs)
+   FOREACH(it ${cmake_include_directories})
+     SET(swig_include_dirs ${swig_include_dirs} "-I${it}")

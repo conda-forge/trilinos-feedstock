@@ -1,4 +1,18 @@
 mkdir -p build
+
+# Fix SWIG 4.3+ compatibility: SWIG_Python_AppendOutput now takes 3 args.
+# PyTrilinos typemaps use the old 2-arg signature. Add the third arg (0 = not void).
+find $SRC_DIR/packages/PyTrilinos/src -name '*.i' -exec \
+  sed -i 's/SWIG_Python_AppendOutput(\(.*\));/SWIG_Python_AppendOutput(\1, 0);/g' {} +
+
+# Fix PyTrilinos_NumPy symbol visibility: NumPy 2.x defaults NPY_API_SYMBOL_ATTRIBUTE
+# to NPY_VISIBILITY_HIDDEN, which hides the PyArray_API symbol (renamed to
+# PyTrilinos_NumPy via PY_ARRAY_UNIQUE_SYMBOL) inside libpytrilinos.so. The SWIG
+# extension modules link against libpytrilinos.so and need this symbol exported.
+# Override NPY_API_SYMBOL_ATTRIBUTE before numpy headers are included.
+sed -i 's/^#define PY_ARRAY_UNIQUE_SYMBOL PyTrilinos_NumPy/#define NPY_API_SYMBOL_ATTRIBUTE __attribute__((visibility("default")))\n#define PY_ARRAY_UNIQUE_SYMBOL PyTrilinos_NumPy/' \
+  $SRC_DIR/packages/PyTrilinos/src/numpy_include.hpp
+
 cd build
 
 export CMAKE_GENERATOR="Ninja"
@@ -105,7 +119,6 @@ cmake -G Ninja \
   -D PyTrilinos_ENABLE_Anasazi=ON \
   -D PyTrilinos_ENABLE_ML=ON \
   -D PyTrilinos_ENABLE_NOX=ON \
-  -D PyTrilinos_SWIG_FLAGS:STRING="-I${SRC_DIR}/packages/teuchos/core/src;-I${SRC_DIR}/packages/teuchos/comm/src;-I${SRC_DIR}/packages/teuchos/parameterlist/src;-I${SRC_DIR}/packages/tpetra/core/src" \
   $SRC_DIR
 
 ninja -j $CPU_COUNT

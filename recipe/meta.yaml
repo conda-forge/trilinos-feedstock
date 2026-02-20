@@ -7,6 +7,9 @@ package:
 source:
   url: https://github.com/trilinos/Trilinos/archive/trilinos-release-{{ version | replace('.', '-') }}.tar.gz
   sha256: e9651c88f581049457036cfc01b527a9d3903c257338eeeab942befd7452f23a
+  patches:
+    - swig-include-dirs.patch
+    - tpetra-swig-remove-classic.patch
 
 
 build:
@@ -71,6 +74,13 @@ outputs:
   - name: pytrilinos
     files:
       - lib/python*/site-packages/PyTrilinos/**
+    requirements:
+      run:
+        - {{ pin_subpackage('trilinos', exact=True) }}
+        - python
+        - numpy
+        - mpi4py
+        - {{ mpi }}  # [unix]
     test:
       requires:
         - mpi4py

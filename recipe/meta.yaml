@@ -71,6 +71,15 @@ outputs:
       - lib/lib*.dylib            # [osx]
       - lib/cmake/Trilinos/*
       - share/trilinos/*
+    requirements:
+      run:
+        - {{ mpi }}  # [unix]
+        - libboost-devel
+        - suitesparse
+        - kokkos ==4.5.01
+        - kokkos-kernels ==4.5.01
+        - libnetcdf
+        - netcdf-cxx4
   - name: pytrilinos
     files:
       - lib/python*/site-packages/PyTrilinos/**

@@ -3,15 +3,17 @@ mkdir -p build
 # Fix SWIG 4.3+ compatibility: SWIG_Python_AppendOutput now takes 3 args.
 # PyTrilinos typemaps use the old 2-arg signature. Add the third arg (0 = not void).
 find $SRC_DIR/packages/PyTrilinos/src -name '*.i' -exec \
-  sed -i 's/SWIG_Python_AppendOutput(\(.*\));/SWIG_Python_AppendOutput(\1, 0);/g' {} +
+  sed -i.bak 's/SWIG_Python_AppendOutput(\(.*\));/SWIG_Python_AppendOutput(\1, 0);/g' {} +
+find $SRC_DIR/packages/PyTrilinos/src -name '*.i.bak' -delete
 
 # Fix PyTrilinos_NumPy symbol visibility: NumPy 2.x defaults NPY_API_SYMBOL_ATTRIBUTE
 # to NPY_VISIBILITY_HIDDEN, which hides the PyArray_API symbol (renamed to
 # PyTrilinos_NumPy via PY_ARRAY_UNIQUE_SYMBOL) inside libpytrilinos.so. The SWIG
 # extension modules link against libpytrilinos.so and need this symbol exported.
 # Override NPY_API_SYMBOL_ATTRIBUTE before numpy headers are included.
-sed -i 's/^#define PY_ARRAY_UNIQUE_SYMBOL PyTrilinos_NumPy/#define NPY_API_SYMBOL_ATTRIBUTE __attribute__((visibility("default")))\n#define PY_ARRAY_UNIQUE_SYMBOL PyTrilinos_NumPy/' \
+sed -i.bak 's/^#define PY_ARRAY_UNIQUE_SYMBOL PyTrilinos_NumPy/#define NPY_API_SYMBOL_ATTRIBUTE __attribute__((visibility("default")))\n#define PY_ARRAY_UNIQUE_SYMBOL PyTrilinos_NumPy/' \
   $SRC_DIR/packages/PyTrilinos/src/numpy_include.hpp
+rm -f $SRC_DIR/packages/PyTrilinos/src/numpy_include.hpp.bak
 
 cd build
 

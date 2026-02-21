@@ -82,8 +82,11 @@ outputs:
         - netcdf-cxx4
   - name: pytrilinos
     files:
-      - lib/python*/site-packages/PyTrilinos/**
+      - lib/python*/site-packages/PyTrilinos/*
+      - lib/python*/site-packages/PyTrilinos/**/*
     requirements:
+      host:
+        - python
       run:
         - {{ pin_subpackage('trilinos', exact=True) }}
         - python

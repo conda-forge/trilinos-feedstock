@@ -27,7 +27,7 @@ requirements:
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
-    - numpy
+    - numpy >=2
     - swig
   host:
     - libblas
@@ -43,7 +43,7 @@ requirements:
     # trilinos cmake expects specific kokkos/kokkos-kernels versions
     - kokkos ==4.5.01
     - kokkos-kernels ==4.5.01
-    - numpy
+    - numpy >=2
     - python {{ python }}
     - python_abi * *_cp313  # [py==313]
     - swig
@@ -57,10 +57,10 @@ requirements:
     - kokkos-kernels ==4.5.01
     - libnetcdf
     - netcdf-cxx4
-    - {{ pin_compatible('numpy') }}
+    - {{ pin_compatible('numpy', min_pin='x') }}
     - python
     - python_abi * *_cp313  # [py==313]
-    - numpy
+    - numpy >=2
     - mpi4py
 
 outputs:
@@ -93,7 +93,7 @@ outputs:
       run:
         - {{ pin_subpackage('trilinos', exact=True) }}
         - python
-        - numpy
+        - numpy >=2
         - mpi4py
         - {{ mpi }}  # [unix]
     test:

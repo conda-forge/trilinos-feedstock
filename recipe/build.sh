@@ -79,12 +79,10 @@ cmake -G Ninja \
   -D Trilinos_ENABLE_Amesos2:BOOL=ON \
   -D Trilinos_ENABLE_SEACAS:BOOL=ON \
   -D TPL_ENABLE_HDF5:BOOL=ON \
-  -D Trilinos_ENABLE_Komplex:BOOL=ON \
   -D Trilinos_ENABLE_Anasazi:BOOL=ON \
   -D Trilinos_ENABLE_Ifpack2:BOOL=ON \
   -D Ifpack2_ENABLE_TESTS:BOOL=OFF \
   -D Trilinos_ENABLE_Stratimikos:BOOL=ON \
-  -D Trilinos_ENABLE_FEI:BOOL=ON \
   -D Trilinos_ENABLE_Teko:BOOL=ON \
   -D Trilinos_ENABLE_Intrepid:BOOL=ON \
   -D Trilinos_ENABLE_STK:BOOL=OFF \
@@ -97,7 +95,6 @@ cmake -G Ninja \
   -D Trilinos_ENABLE_ROL:BOOL=ON \
   -D Trilinos_ENABLE_Piro:BOOL=ON \
   -D Trilinos_ENABLE_TrilinosCouplings:BOOL=ON \
-  -D Trilinos_ENABLE_Pike:BOOL=ON \
   -D Teuchos_ENABLE_COMPLEX:BOOL=ON \
   -D Trilinos_ENABLE_COMPLEX_DOUBLE:BOOL=ON \
   -D Trilinos_ENABLE_PyTrilinos:BOOL=ON \
@@ -115,7 +112,6 @@ cmake -G Ninja \
   -D PyTrilinos_ENABLE_Galeri=ON \
   -D PyTrilinos_ENABLE_Amesos=ON \
   -D PyTrilinos_ENABLE_Ifpack=ON \
-  -D PyTrilinos_ENABLE_Komplex=ON \
   -D PyTrilinos_ENABLE_Anasazi=ON \
   -D PyTrilinos_ENABLE_ML=ON \
   -D PyTrilinos_ENABLE_NOX=ON \

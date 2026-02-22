@@ -105,7 +105,6 @@ outputs:
         - PyTrilinos.TriUtils
         - PyTrilinos.Tpetra
         - PyTrilinos.EpetraExt
-        - PyTrilinos.Domi
         - PyTrilinos.Isorropia
         - PyTrilinos.Pliris
         - PyTrilinos.AztecOO

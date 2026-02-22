@@ -60,7 +60,6 @@ cmake -G Ninja \
   -D Trilinos_ENABLE_Triutils:BOOL=ON \
   -D Trilinos_ENABLE_Tpetra:BOOL=ON \
   -D Trilinos_ENABLE_EpetraExt:BOOL=ON \
-  -D Trilinos_ENABLE_Domi:BOOL=ON \
   -D Trilinos_ENABLE_Thyra:BOOL=ON \
   -D Trilinos_ENABLE_Xpetra:BOOL=ON \
   -D Trilinos_ENABLE_Isorropia:BOOL=ON \
@@ -109,7 +108,6 @@ cmake -G Ninja \
   -D PyTrilinos_ENABLE_Tpetra=ON \
   -D PyTrilinos_ENABLE_Epetra=ON \
   -D PyTrilinos_ENABLE_Triutils=ON \
-  -D PyTrilinos_ENABLE_Domi=ON \
   -D PyTrilinos_ENABLE_EpetraExt=ON \
   -D PyTrilinos_ENABLE_Isorropia=ON \
   -D PyTrilinos_ENABLE_Pliris=ON \
@@ -125,4 +123,5 @@ cmake -G Ninja \
 
 ninja -j $CPU_COUNT
 ninja install
+
 

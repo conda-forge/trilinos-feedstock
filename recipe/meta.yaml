@@ -111,7 +111,6 @@ outputs:
         - PyTrilinos.Galeri
         - PyTrilinos.Amesos
         - PyTrilinos.IFPACK
-        - PyTrilinos.Komplex
         - PyTrilinos.ML
         - PyTrilinos.Anasazi
         - PyTrilinos.NOX

@@ -10,6 +10,7 @@ source:
   patches:
     - swig-include-dirs.patch
     - tpetra-swig-remove-classic.patch
+    - pytrilinos-python-version.patch
 
 
 build:

@@ -1,0 +1,11 @@
+--- a/packages/PyTrilinos/src/CMakeLists.txt
++++ b/packages/PyTrilinos/src/CMakeLists.txt
+@@ -263,7 +263,7 @@
+ #
+ # Get the python version
+ EXECUTE_PROCESS(COMMAND ${Python3_EXECUTABLE} -c
+-                        "import sys; print(sys.version[:3])"
++                        "import sys; print('%d.%d' % (sys.version_info.major, sys.version_info.minor))"
+   OUTPUT_VARIABLE PYTHON_VERSION
+   OUTPUT_STRIP_TRAILING_WHITESPACE
+ )

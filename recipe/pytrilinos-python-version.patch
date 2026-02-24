@@ -9,3 +9,48 @@
    OUTPUT_VARIABLE PYTHON_VERSION
    OUTPUT_STRIP_TRAILING_WHITESPACE
  )
+--- a/packages/PyTrilinos/cmake/FindPythonInclude.cmake
++++ b/packages/PyTrilinos/cmake/FindPythonInclude.cmake
+@@ -54,7 +54,7 @@
+   # Obtain the Python version string
+   EXECUTE_PROCESS(COMMAND
+     ${Python3_EXECUTABLE} -c
+-    "import sys; print('python' + sys.version[:3])"
++    "import sys; print('python%d.%d' % (sys.version_info.major, sys.version_info.minor))"
+     OUTPUT_VARIABLE PYVERSION
+     OUTPUT_STRIP_TRAILING_WHITESPACE
+     )
+--- a/packages/epetraext/cmake/FindPythonInclude.cmake
++++ b/packages/epetraext/cmake/FindPythonInclude.cmake
+@@ -10,28 +10,28 @@
+ IF(Python3_EXECUTABLE)
+   # Obtain the candidate path for python include
+   EXECUTE_PROCESS(COMMAND
+     ${Python3_EXECUTABLE} -c
+-    "import sys; print(sys.prefix + '/include/python' + sys.version[:3])"
++    "import sys; print(sys.prefix + '/include/python%d.%d' % (sys.version_info.major, sys.version_info.minor))"
+     OUTPUT_VARIABLE CANDIDATE
+     OUTPUT_STRIP_TRAILING_WHITESPACE
+     )
+   # Verify theat Python.h exists within the candidate path
+   IF(EXISTS "${CANDIDATE}")
+     IF(EXISTS ${CANDIDATE}/Python.h)
+       SET(PYTHON_INCLUDE_FOUND TRUE)
+       SET(PYTHON_INCLUDE_PATH ${CANDIDATE})
+     ENDIF(EXISTS ${CANDIDATE}/Python.h)
+   ENDIF(EXISTS "${CANDIDATE}")
+   # Obtain the candidate path for python library
+   EXECUTE_PROCESS(COMMAND
+     ${Python3_EXECUTABLE} -c
+-    "import sys; print('python' + sys.version[:3])"
++    "import sys; print('python%d.%d' % (sys.version_info.major, sys.version_info.minor))"
+     OUTPUT_VARIABLE PYVERSION
+     OUTPUT_STRIP_TRAILING_WHITESPACE
+     )
+   EXECUTE_PROCESS(COMMAND
+     ${Python3_EXECUTABLE} -c
+-    "import sys; print(sys.prefix + '/lib/python' + sys.version[:3] + '/config')"
++    "import sys; print(sys.prefix + '/lib/python%d.%d/config' % (sys.version_info.major, sys.version_info.minor))"
+     OUTPUT_VARIABLE CANDIDATE
+     OUTPUT_STRIP_TRAILING_WHITESPACE
+     )

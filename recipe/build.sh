@@ -1,5 +1,14 @@
 mkdir -p build
 
+# Fix Python version detection for Python >= 3.10: sys.version[:3] returns "3.1"
+# instead of "3.10", "3.12", etc. Replace with sys.version_info-based extraction.
+# This is done via sed in addition to the patch file for reliability.
+find $SRC_DIR/packages/PyTrilinos $SRC_DIR/packages/epetraext \
+  \( -name '*.cmake' -o -name 'CMakeLists.txt' \) -exec \
+  sed -i.bak "s|sys.version\[:3\]|'%d.%d' % (sys.version_info.major, sys.version_info.minor)|g" {} +
+find $SRC_DIR/packages/PyTrilinos $SRC_DIR/packages/epetraext \
+  \( -name '*.cmake.bak' -o -name 'CMakeLists.txt.bak' \) -delete
+
 # Fix SWIG 4.3+ compatibility: SWIG_Python_AppendOutput now takes 3 args.
 # PyTrilinos typemaps use the old 2-arg signature. Add the third arg (0 = not void).
 find $SRC_DIR/packages/PyTrilinos/src -name '*.i' -exec \

@@ -1,0 +1,25 @@
+--- a/packages/PyTrilinos/src/Tpetra.i
++++ b/packages/PyTrilinos/src/Tpetra.i
+@@ -628,9 +628,11 @@
+ }
+ %include "Kokkos_Macros.hpp"
+ %ignore KokkosClassic::ESweepDirection;
+-%include "KokkosCompat_DefaultNode.cpp"
++// KokkosCompat_DefaultNode.cpp was removed in Trilinos 16.x;
++// the default node type is now defined in Tpetra_Details_DefaultTypes.hpp
++// which is included transitively via Tpetra_ConfigDefs.hpp below.
++%include "Tpetra_KokkosClassic_DefaultNode_config.h"
+ %include "TpetraCore_config.h"
+-%include "TpetraClassic_config.h"
+ %include "Tpetra_ConfigDefs.hpp"
+ %include "Tpetra_CombineMode.hpp"
+
+@@ -800,6 +802,8 @@
+ %ignore Tpetra::Map< PYTRILINOS_LOCAL_ORD, PYTRILINOS_GLOBAL_ORD, DefaultNodeType >::getGlobalElement;
+ %ignore Tpetra::Map< PYTRILINOS_LOCAL_ORD, PYTRILINOS_GLOBAL_ORD, DefaultNodeType >::getRemoteIndexList;
+ %ignore Tpetra::Map< PYTRILINOS_LOCAL_ORD, PYTRILINOS_GLOBAL_ORD, DefaultNodeType >::getMyGlobalIndices;
++// getMyGlobalIndicesDevice uses a private typedef (global_indices_array_device_type) in Trilinos 16.x
++%ignore Tpetra::Map< PYTRILINOS_LOCAL_ORD, PYTRILINOS_GLOBAL_ORD, DefaultNodeType >::getMyGlobalIndicesDevice;
+
+ %include "Tpetra_Map_decl.hpp"
+

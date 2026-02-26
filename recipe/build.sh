@@ -47,6 +47,8 @@ cmake -G Ninja \
   -D MPI_BASE_DIR:PATH=$PREFIX \
   -D MPI_EXEC:FILEPATH=$PREFIX/bin/mpiexec \
   -D PYTHON_EXECUTABLE:FILEPATH=$PYTHON \
+  -D Python3_EXECUTABLE:FILEPATH=$PYTHON \
+  -D PyTrilinos_INSTALL_DIR:PATH=$PREFIX/lib/python${PY_VER}/site-packages/PyTrilinos \
   -D CMAKE_C_FLAGS="-Wno-implicit-function-declaration" \
   -D TPL_ENABLE_Kokkos:BOOL=ON \
   -D TPL_ENABLE_KokkosKernels:BOOL=ON \

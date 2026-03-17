@@ -25,7 +25,7 @@ libboost_devel:
 liblapack:
 - 3.9.* *netlib
 libmatio:
-- 1.5.28
+- 1.5.29
 macos_machine:
 - x86_64-apple-darwin13.4.0
 mpi:

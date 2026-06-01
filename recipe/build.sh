@@ -91,6 +91,9 @@ cmake -G Ninja \
   -D Trilinos_ENABLE_SEACAS:BOOL=ON \
   -D TPL_ENABLE_HDF5:BOOL=ON \
   -D Trilinos_ENABLE_Anasazi:BOOL=ON \
+  -D TPL_HDF5_LIBRARIES:STRING="${PREFIX}/lib/libhdf5.so;${PREFIX}/lib/libhdf5_hl.so" \
+  -D TPL_HDF5_INCLUDE_DIRS:PATH="${PREFIX}/include" \
+  -D HDF5_NO_FIND_PACKAGE_CONFIG_FILE:BOOL=ON \
   -D Trilinos_ENABLE_Ifpack2:BOOL=ON \
   -D Ifpack2_ENABLE_TESTS:BOOL=OFF \
   -D Trilinos_ENABLE_Stratimikos:BOOL=ON \

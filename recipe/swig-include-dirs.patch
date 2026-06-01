@@ -1,17 +1,33 @@
 --- a/packages/PyTrilinos/src/CMakeLists.txt
 +++ b/packages/PyTrilinos/src/CMakeLists.txt
-@@ -117,6 +117,14 @@
+@@ -117,6 +117,30 @@
  IF(NOX_ENABLE_PETSC)
    INCLUDE_DIRECTORIES(${PETSC4PY_INCLUDES})
  ENDIF(NOX_ENABLE_PETSC)
 +# Expose include dirs of every enabled upstream package to SWIG. Modern TriBITS
 +# propagates these via target_include_directories(PUBLIC), which is not visible
 +# to GET_DIRECTORY_PROPERTY(INCLUDE_DIRECTORIES) used inside UseSWIG.cmake.
-+FOREACH(_pkg ${PyTrilinos_PACKAGES})
-+  IF(DEFINED ${_pkg}_INCLUDE_DIRS)
-+    INCLUDE_DIRECTORIES(${${_pkg}_INCLUDE_DIRS})
++# Walk the packages/ tree and add every src*/ subdir at depth 2 and 3, in both
++# the source and binary trees.
++FILE(GLOB _pytri_extra_src_dirs LIST_DIRECTORIES true
++  "${PROJECT_SOURCE_DIR}/packages/*/src"
++  "${PROJECT_SOURCE_DIR}/packages/*/src-*"
++  "${PROJECT_SOURCE_DIR}/packages/*/*/src"
++  "${PROJECT_SOURCE_DIR}/packages/*/*/src-*"
++  "${PROJECT_BINARY_DIR}/packages/*/src"
++  "${PROJECT_BINARY_DIR}/packages/*/src-*"
++  "${PROJECT_BINARY_DIR}/packages/*/*/src"
++  "${PROJECT_BINARY_DIR}/packages/*/*/src-*"
++  )
++SET(_pytri_real_dirs "")
++FOREACH(_d ${_pytri_extra_src_dirs})
++  IF(IS_DIRECTORY "${_d}")
++    LIST(APPEND _pytri_real_dirs "${_d}")
 +  ENDIF()
 +ENDFOREACH()
++IF(_pytri_real_dirs)
++  INCLUDE_DIRECTORIES(${_pytri_real_dirs})
++ENDIF()
  
  #
  # Copy the pyfragments.swg file to the build directory

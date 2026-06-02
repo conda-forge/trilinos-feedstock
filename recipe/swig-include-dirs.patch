@@ -1,23 +1,27 @@
 --- a/packages/PyTrilinos/src/CMakeLists.txt
 +++ b/packages/PyTrilinos/src/CMakeLists.txt
-@@ -117,6 +117,30 @@
+@@ -117,6 +117,34 @@
  IF(NOX_ENABLE_PETSC)
    INCLUDE_DIRECTORIES(${PETSC4PY_INCLUDES})
  ENDIF(NOX_ENABLE_PETSC)
 +# Expose include dirs of every enabled upstream package to SWIG. Modern TriBITS
 +# propagates these via target_include_directories(PUBLIC), which is not visible
 +# to GET_DIRECTORY_PROPERTY(INCLUDE_DIRECTORIES) used inside UseSWIG.cmake.
-+# Walk the packages/ tree and add every src*/ subdir at depth 2 and 3, in both
-+# the source and binary trees.
++# Walk the packages/ tree and add every src*/ subdir (and one nested level) in
++# both the source and binary trees.
 +FILE(GLOB _pytri_extra_src_dirs LIST_DIRECTORIES true
 +  "${PROJECT_SOURCE_DIR}/packages/*/src"
 +  "${PROJECT_SOURCE_DIR}/packages/*/src-*"
++  "${PROJECT_SOURCE_DIR}/packages/*/src/*"
 +  "${PROJECT_SOURCE_DIR}/packages/*/*/src"
 +  "${PROJECT_SOURCE_DIR}/packages/*/*/src-*"
++  "${PROJECT_SOURCE_DIR}/packages/*/*/src/*"
 +  "${PROJECT_BINARY_DIR}/packages/*/src"
 +  "${PROJECT_BINARY_DIR}/packages/*/src-*"
++  "${PROJECT_BINARY_DIR}/packages/*/src/*"
 +  "${PROJECT_BINARY_DIR}/packages/*/*/src"
 +  "${PROJECT_BINARY_DIR}/packages/*/*/src-*"
++  "${PROJECT_BINARY_DIR}/packages/*/*/src/*"
 +  )
 +SET(_pytri_real_dirs "")
 +FOREACH(_d ${_pytri_extra_src_dirs})

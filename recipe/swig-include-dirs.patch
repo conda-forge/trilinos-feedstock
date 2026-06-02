@@ -1,30 +1,36 @@
---- a/packages/PyTrilinos/src/CMakeLists.txt
-+++ b/packages/PyTrilinos/src/CMakeLists.txt
-@@ -117,6 +117,27 @@
- IF(NOX_ENABLE_PETSC)
-   INCLUDE_DIRECTORIES(${PETSC4PY_INCLUDES})
- ENDIF(NOX_ENABLE_PETSC)
-+# Expose include dirs of every enabled upstream package to SWIG. Modern TriBITS
-+# propagates these via target_include_directories(PUBLIC), which is not visible
-+# to GET_DIRECTORY_PROPERTY(INCLUDE_DIRECTORIES) used inside UseSWIG.cmake.
-+# Recursively find all headers in source + binary trees and add their parent
-+# directories.
-+FILE(GLOB_RECURSE _pytri_all_headers
-+  "${PROJECT_SOURCE_DIR}/packages/*.h"
-+  "${PROJECT_SOURCE_DIR}/packages/*.H"
-+  "${PROJECT_SOURCE_DIR}/packages/*.hpp"
-+  "${PROJECT_BINARY_DIR}/packages/*.h"
-+  "${PROJECT_BINARY_DIR}/packages/*.hpp"
-+  )
-+SET(_pytri_real_dirs "")
-+FOREACH(_h ${_pytri_all_headers})
-+  GET_FILENAME_COMPONENT(_d "${_h}" DIRECTORY)
-+  LIST(APPEND _pytri_real_dirs "${_d}")
-+ENDFOREACH()
-+LIST(REMOVE_DUPLICATES _pytri_real_dirs)
-+IF(_pytri_real_dirs)
-+  INCLUDE_DIRECTORIES(${_pytri_real_dirs})
-+ENDIF()
+--- a/packages/PyTrilinos/cmake/UseSWIG.cmake
++++ b/packages/PyTrilinos/cmake/UseSWIG.cmake
+@@ -246,6 +246,33 @@
+   FOREACH(it ${cmake_include_directories})
+     SET(swig_include_dirs ${swig_include_dirs} "-I${it}")
+   ENDFOREACH(it)
++  # Trilinos16 fix: TriBITS no longer populates the INCLUDE_DIRECTORIES property
++  # for upstream packages, so SWIG cannot find their headers. Recursively glob
++  # the source + binary packages/ tree and append every directory that contains
++  # at least one header to the swig include list (swig-only; does not pollute
++  # the CMake INCLUDE_DIRECTORIES property used by compile commands).
++  IF(NOT _SWIG_PYTRI_EXTRA_INCLUDES_INITIALIZED)
++    FILE(GLOB_RECURSE _swig_pytri_headers
++      "${PROJECT_SOURCE_DIR}/packages/*.h"
++      "${PROJECT_SOURCE_DIR}/packages/*.H"
++      "${PROJECT_SOURCE_DIR}/packages/*.hpp"
++      "${PROJECT_BINARY_DIR}/packages/*.h"
++      "${PROJECT_BINARY_DIR}/packages/*.hpp"
++      )
++    SET(_swig_pytri_dirs "")
++    FOREACH(_h ${_swig_pytri_headers})
++      GET_FILENAME_COMPONENT(_d "${_h}" DIRECTORY)
++      LIST(APPEND _swig_pytri_dirs "${_d}")
++    ENDFOREACH()
++    LIST(REMOVE_DUPLICATES _swig_pytri_dirs)
++    SET(_SWIG_PYTRI_EXTRA_INCLUDES "${_swig_pytri_dirs}"
++      CACHE INTERNAL "swig extra include dirs" FORCE)
++    SET(_SWIG_PYTRI_EXTRA_INCLUDES_INITIALIZED TRUE
++      CACHE INTERNAL "" FORCE)
++  ENDIF()
++  FOREACH(it ${_SWIG_PYTRI_EXTRA_INCLUDES})
++    SET(swig_include_dirs ${swig_include_dirs} "-I${it}")
++  ENDFOREACH()
  
- #
- # Copy the pyfragments.swg file to the build directory
+   SET(swig_special_flags)
+   # Default is c, so add c++ flag if it is c++

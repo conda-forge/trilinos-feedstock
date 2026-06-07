@@ -90,6 +90,14 @@ cmake -G Ninja \
   -D Trilinos_ENABLE_Amesos2:BOOL=ON \
   -D Trilinos_ENABLE_SEACAS:BOOL=ON \
   -D TPL_ENABLE_HDF5:BOOL=ON \
+  -D TPL_HDF5_INCLUDE_DIRS:PATH="${PREFIX}/include" \
+  -D TPL_HDF5_LIBRARY_DIRS:PATH="${PREFIX}/lib" \
+  -D TPL_HDF5_LIBRARIES:STRING="${PREFIX}/lib/libhdf5_hl${SHLIB_EXT};${PREFIX}/lib/libhdf5${SHLIB_EXT};${PREFIX}/lib/libz${SHLIB_EXT}" \
+  -D TPL_Netcdf_INCLUDE_DIRS:PATH="${PREFIX}/include" \
+  -D TPL_Netcdf_LIBRARIES:STRING="${PREFIX}/lib/libnetcdf${SHLIB_EXT}" \
+  -D TPL_Matio_INCLUDE_DIRS:PATH="${PREFIX}/include" \
+  -D TPL_Matio_LIBRARIES:STRING="${PREFIX}/lib/libmatio${SHLIB_EXT}" \
+  -D TPL_Boost_INCLUDE_DIRS:PATH="${PREFIX}/include" \
   -D Trilinos_ENABLE_Anasazi:BOOL=ON \
   -D TPL_HDF5_LIBRARIES:STRING="${PREFIX}/lib/libhdf5.so;${PREFIX}/lib/libhdf5_hl.so" \
   -D TPL_HDF5_INCLUDE_DIRS:PATH="${PREFIX}/include" \

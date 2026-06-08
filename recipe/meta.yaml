@@ -58,7 +58,6 @@ requirements:
     - kokkos-kernels ==4.5.01
     - libnetcdf
     - netcdf-cxx4
-    - {{ pin_compatible('numpy', min_pin='x') }}
     - python
     - python_abi * *_cp313  # [py==313]
     - numpy >=2
@@ -84,6 +83,13 @@ outputs:
         - netcdf-cxx4
         - libmatio
         - xorg-libx11
+    test:
+      commands:
+        - test -f $PREFIX/include/TeuchosCore_ConfigDefs.hpp        # [unix]
+        - test -f $PREFIX/lib/libteuchoscore.{{ version }}.dylib    # [osx]
+        - test -f $PREFIX/lib/libteuchoscore.so.{{ version }}       # [linux]
+        - if not exist %PREFIX%\\Library\\include\\TeuchosCore_ConfigDefs.hpp exit 1  # [win]
+        - if not exist %PREFIX%\\Library\\lib\\teuchoscore.lib exit 1  # [win]
   - name: pytrilinos
     files:
       - lib/python*/site-packages/PyTrilinos/*

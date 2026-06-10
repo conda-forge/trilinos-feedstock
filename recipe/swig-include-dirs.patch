@@ -1,0 +1,36 @@
+--- a/packages/PyTrilinos/cmake/UseSWIG.cmake
++++ b/packages/PyTrilinos/cmake/UseSWIG.cmake
+@@ -246,6 +246,33 @@
+   FOREACH(it ${cmake_include_directories})
+     SET(swig_include_dirs ${swig_include_dirs} "-I${it}")
+   ENDFOREACH(it)
++  # Trilinos16 fix: TriBITS no longer populates the INCLUDE_DIRECTORIES property
++  # for upstream packages, so SWIG cannot find their headers. Recursively glob
++  # the source + binary packages/ tree and append every directory that contains
++  # at least one header to the swig include list (swig-only; does not pollute
++  # the CMake INCLUDE_DIRECTORIES property used by compile commands).
++  IF(NOT _SWIG_PYTRI_EXTRA_INCLUDES_INITIALIZED)
++    FILE(GLOB_RECURSE _swig_pytri_headers
++      "${PROJECT_SOURCE_DIR}/packages/*.h"
++      "${PROJECT_SOURCE_DIR}/packages/*.H"
++      "${PROJECT_SOURCE_DIR}/packages/*.hpp"
++      "${PROJECT_BINARY_DIR}/packages/*.h"
++      "${PROJECT_BINARY_DIR}/packages/*.hpp"
++      )
++    SET(_swig_pytri_dirs "")
++    FOREACH(_h ${_swig_pytri_headers})
++      GET_FILENAME_COMPONENT(_d "${_h}" DIRECTORY)
++      LIST(APPEND _swig_pytri_dirs "${_d}")
++    ENDFOREACH()
++    LIST(REMOVE_DUPLICATES _swig_pytri_dirs)
++    SET(_SWIG_PYTRI_EXTRA_INCLUDES "${_swig_pytri_dirs}"
++      CACHE INTERNAL "swig extra include dirs" FORCE)
++    SET(_SWIG_PYTRI_EXTRA_INCLUDES_INITIALIZED TRUE
++      CACHE INTERNAL "" FORCE)
++  ENDIF()
++  FOREACH(it ${_SWIG_PYTRI_EXTRA_INCLUDES})
++    SET(swig_include_dirs ${swig_include_dirs} "-I${it}")
++  ENDFOREACH()
+ 
+   SET(swig_special_flags)
+   # Default is c, so add c++ flag if it is c++

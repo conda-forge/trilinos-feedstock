@@ -58,9 +58,6 @@ requirements:
     - kokkos-kernels ==4.5.01
     - libnetcdf
     - netcdf-cxx4
-    - python
-    - python_abi * *_cp313  # [py==313]
-    - numpy
     - mpi4py
 
 outputs:

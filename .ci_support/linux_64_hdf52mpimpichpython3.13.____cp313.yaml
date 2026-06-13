@@ -20,6 +20,8 @@ fortran_compiler:
 - gfortran
 fortran_compiler_version:
 - '14'
+hdf5:
+- '2'
 libblas:
 - 3.9.* *netlib
 libboost_devel:
@@ -41,7 +43,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.14.* *_cp314
+- 3.13.* *_cp313
 target_platform:
 - linux-64
 zip_keys:

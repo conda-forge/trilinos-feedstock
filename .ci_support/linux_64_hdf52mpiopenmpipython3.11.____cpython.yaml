@@ -20,6 +20,8 @@ fortran_compiler:
 - gfortran
 fortran_compiler_version:
 - '14'
+hdf5:
+- '2'
 libblas:
 - 3.9.* *netlib
 libboost_devel:
@@ -27,7 +29,7 @@ libboost_devel:
 liblapack:
 - 3.9.* *netlib
 mpi:
-- mpich
+- openmpi
 mpich:
 - '4'
 netcdf_cxx4:

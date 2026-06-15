@@ -29,7 +29,7 @@ liblapack:
 mpi:
 - mpich
 mpich:
-- '4'
+- '5'
 netcdf_cxx4:
 - '4.3'
 openmpi:

@@ -14,7 +14,7 @@ source:
 
 
 build:
-  number: 7
+  number: 9
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage('trilinos', max_pin='x.x') }}
@@ -40,7 +40,8 @@ requirements:
     - netcdf-cxx4
     - libmatio
     - xorg-libx11
-    - hdf5 >=2.0 mpi_{{ mpi }}_*
+    - hdf5
+    - hdf5 * mpi_{{ mpi }}_*
     # trilinos cmake expects specific kokkos/kokkos-kernels versions
     - kokkos ==4.5.01
     - kokkos-kernels ==4.5.01
@@ -58,9 +59,6 @@ requirements:
     - kokkos-kernels ==4.5.01
     - libnetcdf
     - netcdf-cxx4
-    - python
-    - python_abi * *_cp313  # [py==313]
-    - numpy
     - mpi4py
 
 outputs:

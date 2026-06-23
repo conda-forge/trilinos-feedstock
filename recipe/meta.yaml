@@ -7,10 +7,6 @@ package:
 source:
   url: https://github.com/trilinos/Trilinos/archive/trilinos-release-{{ version | replace('.', '-') }}.tar.gz
   sha256: 482bb76c9a993767a9e649261462f70620254a631d34fb089482d8474dfb2766
-  patches:
-    - swig-include-dirs.patch
-    - tpetra-swig-remove-classic.patch
-    - pytrilinos-python-version.patch
 
 
 build:

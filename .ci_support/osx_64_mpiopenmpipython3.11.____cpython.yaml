@@ -22,10 +22,12 @@ fortran_compiler:
 - gfortran
 fortran_compiler_version:
 - '14'
+hdf5:
+- 1.14.6
 libblas:
 - 3.9.* *netlib
 libboost_devel:
-- '1.88'
+- '1.90'
 liblapack:
 - 3.9.* *netlib
 macos_machine:

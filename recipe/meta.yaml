@@ -1,4 +1,4 @@
-{% set version = "16.2.0" %}
+{% set version = "17-2-0" %}
 
 package:
   name: trilinos-split
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/trilinos/Trilinos/archive/trilinos-release-{{ version | replace('.', '-') }}.tar.gz
-  sha256: 543aa56232d7c0cbe73705fab2d3b5524f11b15fef8917aa14de02d23a5ca418
+  sha256: 3df928f8d600fd8952593565c507112bc562ac32f3ef9ba6217d9a86072c3e72
   patches:
     - swig-include-dirs.patch
     - tpetra-swig-remove-classic.patch
@@ -14,7 +14,7 @@ source:
 
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage('trilinos', max_pin='x.x') }}

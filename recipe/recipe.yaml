@@ -16,7 +16,7 @@ source:
     - pytrilinos-python-version.patch
 
 build:
-  number: 2
+  number: 3
   skip: win
 
 outputs:
@@ -94,10 +94,9 @@ outputs:
           - if: linux
             then: test -f $PREFIX/lib/libteuchoscore.so.${{ version }}
           - if: win
-            then: if not exist %PREFIX%\\Library\\include\\TeuchosCore_ConfigDefs.hpp exit 1
-          - if: win
-            then: if not exist %PREFIX%\\Library\\lib\\teuchoscore.lib exit 1
-
+            then:
+              - if not exist %PREFIX%\\Library\\include\\TeuchosCore_ConfigDefs.hpp exit 1
+              - if not exist %PREFIX%\\Library\\lib\\teuchoscore.lib exit 1
   - package:
       name: pytrilinos
     inherit: trilinos-split-build

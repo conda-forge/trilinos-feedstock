@@ -5,11 +5,11 @@
 
 [workspace]
 name = "trilinos-feedstock"
-version = "2026.9.1"  # conda-smithy version used to generate this file
+version = "2026.9.23"  # conda-smithy version used to generate this file
 description = "Pixi configuration for conda-forge/trilinos-feedstock"
 authors = ["@conda-forge/trilinos"]
 channels = ["conda-forge"]
-platforms = ["linux-64", "osx-64", "osx-arm64", "win-64", "win-arm64"]
+platforms = ["linux-64", "linux-aarch64", "osx-64", "osx-arm64", "win-64", "win-arm64"]
 requires-pixi = ">=0.59.0"
 
 [tasks.build-locally]
@@ -37,222 +37,276 @@ description = "List contents of all packages found in rattler-build build direct
 [feature.build.tasks.build]
 cmd = "rattler-build build --recipe recipe"
 description = "Build trilinos-feedstock directly (without setup scripts), no particular variant specified"
-[feature.build.tasks."build-linux_64_mpimpichpython3.11.____cpython"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_mpimpichpython3.11.____cpython.yaml --target-platform linux-64"
-description = "Build trilinos-feedstock with variant linux_64_mpimpichpython3.11.____cpython directly (without setup scripts)"
-[feature.build.tasks."debug-linux_64_mpimpichpython3.11.____cpython"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_mpimpichpython3.11.____cpython.yaml --target-platform linux-64"
-description = "Debug trilinos-feedstock with variant linux_64_mpimpichpython3.11.____cpython directly (without setup scripts)"
-[feature.build.tasks."inspect-linux_64_mpimpichpython3.11.____cpython"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_mpimpichpython3.11.____cpython.yaml"
-description = "List contents of trilinos-feedstock packages built for variant linux_64_mpimpichpython3.11.____cpython"
-[feature.build.tasks."build-linux_64_mpimpichpython3.12.____cpython"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_mpimpichpython3.12.____cpython.yaml --target-platform linux-64"
-description = "Build trilinos-feedstock with variant linux_64_mpimpichpython3.12.____cpython directly (without setup scripts)"
-[feature.build.tasks."debug-linux_64_mpimpichpython3.12.____cpython"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_mpimpichpython3.12.____cpython.yaml --target-platform linux-64"
-description = "Debug trilinos-feedstock with variant linux_64_mpimpichpython3.12.____cpython directly (without setup scripts)"
-[feature.build.tasks."inspect-linux_64_mpimpichpython3.12.____cpython"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_mpimpichpython3.12.____cpython.yaml"
-description = "List contents of trilinos-feedstock packages built for variant linux_64_mpimpichpython3.12.____cpython"
-[feature.build.tasks."build-linux_64_mpimpichpython3.13.____cp313"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_mpimpichpython3.13.____cp313.yaml --target-platform linux-64"
-description = "Build trilinos-feedstock with variant linux_64_mpimpichpython3.13.____cp313 directly (without setup scripts)"
-[feature.build.tasks."debug-linux_64_mpimpichpython3.13.____cp313"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_mpimpichpython3.13.____cp313.yaml --target-platform linux-64"
-description = "Debug trilinos-feedstock with variant linux_64_mpimpichpython3.13.____cp313 directly (without setup scripts)"
-[feature.build.tasks."inspect-linux_64_mpimpichpython3.13.____cp313"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_mpimpichpython3.13.____cp313.yaml"
-description = "List contents of trilinos-feedstock packages built for variant linux_64_mpimpichpython3.13.____cp313"
-[feature.build.tasks."build-linux_64_mpimpichpython3.14.____cp314"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_mpimpichpython3.14.____cp314.yaml --target-platform linux-64"
-description = "Build trilinos-feedstock with variant linux_64_mpimpichpython3.14.____cp314 directly (without setup scripts)"
-[feature.build.tasks."debug-linux_64_mpimpichpython3.14.____cp314"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_mpimpichpython3.14.____cp314.yaml --target-platform linux-64"
-description = "Debug trilinos-feedstock with variant linux_64_mpimpichpython3.14.____cp314 directly (without setup scripts)"
-[feature.build.tasks."inspect-linux_64_mpimpichpython3.14.____cp314"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_mpimpichpython3.14.____cp314.yaml"
-description = "List contents of trilinos-feedstock packages built for variant linux_64_mpimpichpython3.14.____cp314"
-[feature.build.tasks."build-linux_64_mpiopenmpipython3.11.____cpython"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_mpiopenmpipython3.11.____cpython.yaml --target-platform linux-64"
-description = "Build trilinos-feedstock with variant linux_64_mpiopenmpipython3.11.____cpython directly (without setup scripts)"
-[feature.build.tasks."debug-linux_64_mpiopenmpipython3.11.____cpython"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_mpiopenmpipython3.11.____cpython.yaml --target-platform linux-64"
-description = "Debug trilinos-feedstock with variant linux_64_mpiopenmpipython3.11.____cpython directly (without setup scripts)"
-[feature.build.tasks."inspect-linux_64_mpiopenmpipython3.11.____cpython"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_mpiopenmpipython3.11.____cpython.yaml"
-description = "List contents of trilinos-feedstock packages built for variant linux_64_mpiopenmpipython3.11.____cpython"
-[feature.build.tasks."build-linux_64_mpiopenmpipython3.12.____cpython"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_mpiopenmpipython3.12.____cpython.yaml --target-platform linux-64"
-description = "Build trilinos-feedstock with variant linux_64_mpiopenmpipython3.12.____cpython directly (without setup scripts)"
-[feature.build.tasks."debug-linux_64_mpiopenmpipython3.12.____cpython"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_mpiopenmpipython3.12.____cpython.yaml --target-platform linux-64"
-description = "Debug trilinos-feedstock with variant linux_64_mpiopenmpipython3.12.____cpython directly (without setup scripts)"
-[feature.build.tasks."inspect-linux_64_mpiopenmpipython3.12.____cpython"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_mpiopenmpipython3.12.____cpython.yaml"
-description = "List contents of trilinos-feedstock packages built for variant linux_64_mpiopenmpipython3.12.____cpython"
-[feature.build.tasks."build-linux_64_mpiopenmpipython3.13.____cp313"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_mpiopenmpipython3.13.____cp313.yaml --target-platform linux-64"
-description = "Build trilinos-feedstock with variant linux_64_mpiopenmpipython3.13.____cp313 directly (without setup scripts)"
-[feature.build.tasks."debug-linux_64_mpiopenmpipython3.13.____cp313"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_mpiopenmpipython3.13.____cp313.yaml --target-platform linux-64"
-description = "Debug trilinos-feedstock with variant linux_64_mpiopenmpipython3.13.____cp313 directly (without setup scripts)"
-[feature.build.tasks."inspect-linux_64_mpiopenmpipython3.13.____cp313"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_mpiopenmpipython3.13.____cp313.yaml"
-description = "List contents of trilinos-feedstock packages built for variant linux_64_mpiopenmpipython3.13.____cp313"
-[feature.build.tasks."build-linux_64_mpiopenmpipython3.14.____cp314"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_mpiopenmpipython3.14.____cp314.yaml --target-platform linux-64"
-description = "Build trilinos-feedstock with variant linux_64_mpiopenmpipython3.14.____cp314 directly (without setup scripts)"
-[feature.build.tasks."debug-linux_64_mpiopenmpipython3.14.____cp314"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_mpiopenmpipython3.14.____cp314.yaml --target-platform linux-64"
-description = "Debug trilinos-feedstock with variant linux_64_mpiopenmpipython3.14.____cp314 directly (without setup scripts)"
-[feature.build.tasks."inspect-linux_64_mpiopenmpipython3.14.____cp314"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_mpiopenmpipython3.14.____cp314.yaml"
-description = "List contents of trilinos-feedstock packages built for variant linux_64_mpiopenmpipython3.14.____cp314"
-[feature.build.tasks."build-linux_aarch64_mpimpichpython3.11.____cpython"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_mpimpichpython3.11.____cpython.yaml --target-platform linux-aarch64"
-description = "Build trilinos-feedstock with variant linux_aarch64_mpimpichpython3.11.____cpython directly (without setup scripts)"
-[feature.build.tasks."debug-linux_aarch64_mpimpichpython3.11.____cpython"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_mpimpichpython3.11.____cpython.yaml --target-platform linux-aarch64"
-description = "Debug trilinos-feedstock with variant linux_aarch64_mpimpichpython3.11.____cpython directly (without setup scripts)"
-[feature.build.tasks."inspect-linux_aarch64_mpimpichpython3.11.____cpython"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_mpimpichpython3.11.____cpython.yaml"
-description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_mpimpichpython3.11.____cpython"
-[feature.build.tasks."build-linux_aarch64_mpimpichpython3.12.____cpython"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_mpimpichpython3.12.____cpython.yaml --target-platform linux-aarch64"
-description = "Build trilinos-feedstock with variant linux_aarch64_mpimpichpython3.12.____cpython directly (without setup scripts)"
-[feature.build.tasks."debug-linux_aarch64_mpimpichpython3.12.____cpython"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_mpimpichpython3.12.____cpython.yaml --target-platform linux-aarch64"
-description = "Debug trilinos-feedstock with variant linux_aarch64_mpimpichpython3.12.____cpython directly (without setup scripts)"
-[feature.build.tasks."inspect-linux_aarch64_mpimpichpython3.12.____cpython"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_mpimpichpython3.12.____cpython.yaml"
-description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_mpimpichpython3.12.____cpython"
-[feature.build.tasks."build-linux_aarch64_mpimpichpython3.13.____cp313"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_mpimpichpython3.13.____cp313.yaml --target-platform linux-aarch64"
-description = "Build trilinos-feedstock with variant linux_aarch64_mpimpichpython3.13.____cp313 directly (without setup scripts)"
-[feature.build.tasks."debug-linux_aarch64_mpimpichpython3.13.____cp313"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_mpimpichpython3.13.____cp313.yaml --target-platform linux-aarch64"
-description = "Debug trilinos-feedstock with variant linux_aarch64_mpimpichpython3.13.____cp313 directly (without setup scripts)"
-[feature.build.tasks."inspect-linux_aarch64_mpimpichpython3.13.____cp313"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_mpimpichpython3.13.____cp313.yaml"
-description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_mpimpichpython3.13.____cp313"
-[feature.build.tasks."build-linux_aarch64_mpimpichpython3.14.____cp314"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_mpimpichpython3.14.____cp314.yaml --target-platform linux-aarch64"
-description = "Build trilinos-feedstock with variant linux_aarch64_mpimpichpython3.14.____cp314 directly (without setup scripts)"
-[feature.build.tasks."debug-linux_aarch64_mpimpichpython3.14.____cp314"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_mpimpichpython3.14.____cp314.yaml --target-platform linux-aarch64"
-description = "Debug trilinos-feedstock with variant linux_aarch64_mpimpichpython3.14.____cp314 directly (without setup scripts)"
-[feature.build.tasks."inspect-linux_aarch64_mpimpichpython3.14.____cp314"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_mpimpichpython3.14.____cp314.yaml"
-description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_mpimpichpython3.14.____cp314"
-[feature.build.tasks."build-linux_aarch64_mpiopenmpipython3.11.____cpython"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_mpiopenmpipython3.11.____cpython.yaml --target-platform linux-aarch64"
-description = "Build trilinos-feedstock with variant linux_aarch64_mpiopenmpipython3.11.____cpython directly (without setup scripts)"
-[feature.build.tasks."debug-linux_aarch64_mpiopenmpipython3.11.____cpython"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_mpiopenmpipython3.11.____cpython.yaml --target-platform linux-aarch64"
-description = "Debug trilinos-feedstock with variant linux_aarch64_mpiopenmpipython3.11.____cpython directly (without setup scripts)"
-[feature.build.tasks."inspect-linux_aarch64_mpiopenmpipython3.11.____cpython"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_mpiopenmpipython3.11.____cpython.yaml"
-description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_mpiopenmpipython3.11.____cpython"
-[feature.build.tasks."build-linux_aarch64_mpiopenmpipython3.12.____cpython"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_mpiopenmpipython3.12.____cpython.yaml --target-platform linux-aarch64"
-description = "Build trilinos-feedstock with variant linux_aarch64_mpiopenmpipython3.12.____cpython directly (without setup scripts)"
-[feature.build.tasks."debug-linux_aarch64_mpiopenmpipython3.12.____cpython"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_mpiopenmpipython3.12.____cpython.yaml --target-platform linux-aarch64"
-description = "Debug trilinos-feedstock with variant linux_aarch64_mpiopenmpipython3.12.____cpython directly (without setup scripts)"
-[feature.build.tasks."inspect-linux_aarch64_mpiopenmpipython3.12.____cpython"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_mpiopenmpipython3.12.____cpython.yaml"
-description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_mpiopenmpipython3.12.____cpython"
-[feature.build.tasks."build-linux_aarch64_mpiopenmpipython3.13.____cp313"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_mpiopenmpipython3.13.____cp313.yaml --target-platform linux-aarch64"
-description = "Build trilinos-feedstock with variant linux_aarch64_mpiopenmpipython3.13.____cp313 directly (without setup scripts)"
-[feature.build.tasks."debug-linux_aarch64_mpiopenmpipython3.13.____cp313"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_mpiopenmpipython3.13.____cp313.yaml --target-platform linux-aarch64"
-description = "Debug trilinos-feedstock with variant linux_aarch64_mpiopenmpipython3.13.____cp313 directly (without setup scripts)"
-[feature.build.tasks."inspect-linux_aarch64_mpiopenmpipython3.13.____cp313"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_mpiopenmpipython3.13.____cp313.yaml"
-description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_mpiopenmpipython3.13.____cp313"
-[feature.build.tasks."build-linux_aarch64_mpiopenmpipython3.14.____cp314"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_mpiopenmpipython3.14.____cp314.yaml --target-platform linux-aarch64"
-description = "Build trilinos-feedstock with variant linux_aarch64_mpiopenmpipython3.14.____cp314 directly (without setup scripts)"
-[feature.build.tasks."debug-linux_aarch64_mpiopenmpipython3.14.____cp314"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_mpiopenmpipython3.14.____cp314.yaml --target-platform linux-aarch64"
-description = "Debug trilinos-feedstock with variant linux_aarch64_mpiopenmpipython3.14.____cp314 directly (without setup scripts)"
-[feature.build.tasks."inspect-linux_aarch64_mpiopenmpipython3.14.____cp314"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_mpiopenmpipython3.14.____cp314.yaml"
-description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_mpiopenmpipython3.14.____cp314"
-[feature.build.tasks."build-osx_64_mpimpichpython3.11.____cpython"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_mpimpichpython3.11.____cpython.yaml --target-platform osx-64"
-description = "Build trilinos-feedstock with variant osx_64_mpimpichpython3.11.____cpython directly (without setup scripts)"
-[feature.build.tasks."debug-osx_64_mpimpichpython3.11.____cpython"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_mpimpichpython3.11.____cpython.yaml --target-platform osx-64"
-description = "Debug trilinos-feedstock with variant osx_64_mpimpichpython3.11.____cpython directly (without setup scripts)"
-[feature.build.tasks."inspect-osx_64_mpimpichpython3.11.____cpython"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_mpimpichpython3.11.____cpython.yaml"
-description = "List contents of trilinos-feedstock packages built for variant osx_64_mpimpichpython3.11.____cpython"
-[feature.build.tasks."build-osx_64_mpimpichpython3.12.____cpython"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_mpimpichpython3.12.____cpython.yaml --target-platform osx-64"
-description = "Build trilinos-feedstock with variant osx_64_mpimpichpython3.12.____cpython directly (without setup scripts)"
-[feature.build.tasks."debug-osx_64_mpimpichpython3.12.____cpython"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_mpimpichpython3.12.____cpython.yaml --target-platform osx-64"
-description = "Debug trilinos-feedstock with variant osx_64_mpimpichpython3.12.____cpython directly (without setup scripts)"
-[feature.build.tasks."inspect-osx_64_mpimpichpython3.12.____cpython"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_mpimpichpython3.12.____cpython.yaml"
-description = "List contents of trilinos-feedstock packages built for variant osx_64_mpimpichpython3.12.____cpython"
-[feature.build.tasks."build-osx_64_mpimpichpython3.13.____cp313"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_mpimpichpython3.13.____cp313.yaml --target-platform osx-64"
-description = "Build trilinos-feedstock with variant osx_64_mpimpichpython3.13.____cp313 directly (without setup scripts)"
-[feature.build.tasks."debug-osx_64_mpimpichpython3.13.____cp313"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_mpimpichpython3.13.____cp313.yaml --target-platform osx-64"
-description = "Debug trilinos-feedstock with variant osx_64_mpimpichpython3.13.____cp313 directly (without setup scripts)"
-[feature.build.tasks."inspect-osx_64_mpimpichpython3.13.____cp313"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_mpimpichpython3.13.____cp313.yaml"
-description = "List contents of trilinos-feedstock packages built for variant osx_64_mpimpichpython3.13.____cp313"
-[feature.build.tasks."build-osx_64_mpimpichpython3.14.____cp314"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_mpimpichpython3.14.____cp314.yaml --target-platform osx-64"
-description = "Build trilinos-feedstock with variant osx_64_mpimpichpython3.14.____cp314 directly (without setup scripts)"
-[feature.build.tasks."debug-osx_64_mpimpichpython3.14.____cp314"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_mpimpichpython3.14.____cp314.yaml --target-platform osx-64"
-description = "Debug trilinos-feedstock with variant osx_64_mpimpichpython3.14.____cp314 directly (without setup scripts)"
-[feature.build.tasks."inspect-osx_64_mpimpichpython3.14.____cp314"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_mpimpichpython3.14.____cp314.yaml"
-description = "List contents of trilinos-feedstock packages built for variant osx_64_mpimpichpython3.14.____cp314"
-[feature.build.tasks."build-osx_64_mpiopenmpipython3.11.____cpython"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_mpiopenmpipython3.11.____cpython.yaml --target-platform osx-64"
-description = "Build trilinos-feedstock with variant osx_64_mpiopenmpipython3.11.____cpython directly (without setup scripts)"
-[feature.build.tasks."debug-osx_64_mpiopenmpipython3.11.____cpython"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_mpiopenmpipython3.11.____cpython.yaml --target-platform osx-64"
-description = "Debug trilinos-feedstock with variant osx_64_mpiopenmpipython3.11.____cpython directly (without setup scripts)"
-[feature.build.tasks."inspect-osx_64_mpiopenmpipython3.11.____cpython"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_mpiopenmpipython3.11.____cpython.yaml"
-description = "List contents of trilinos-feedstock packages built for variant osx_64_mpiopenmpipython3.11.____cpython"
-[feature.build.tasks."build-osx_64_mpiopenmpipython3.12.____cpython"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_mpiopenmpipython3.12.____cpython.yaml --target-platform osx-64"
-description = "Build trilinos-feedstock with variant osx_64_mpiopenmpipython3.12.____cpython directly (without setup scripts)"
-[feature.build.tasks."debug-osx_64_mpiopenmpipython3.12.____cpython"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_mpiopenmpipython3.12.____cpython.yaml --target-platform osx-64"
-description = "Debug trilinos-feedstock with variant osx_64_mpiopenmpipython3.12.____cpython directly (without setup scripts)"
-[feature.build.tasks."inspect-osx_64_mpiopenmpipython3.12.____cpython"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_mpiopenmpipython3.12.____cpython.yaml"
-description = "List contents of trilinos-feedstock packages built for variant osx_64_mpiopenmpipython3.12.____cpython"
-[feature.build.tasks."build-osx_64_mpiopenmpipython3.13.____cp313"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_mpiopenmpipython3.13.____cp313.yaml --target-platform osx-64"
-description = "Build trilinos-feedstock with variant osx_64_mpiopenmpipython3.13.____cp313 directly (without setup scripts)"
-[feature.build.tasks."debug-osx_64_mpiopenmpipython3.13.____cp313"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_mpiopenmpipython3.13.____cp313.yaml --target-platform osx-64"
-description = "Debug trilinos-feedstock with variant osx_64_mpiopenmpipython3.13.____cp313 directly (without setup scripts)"
-[feature.build.tasks."inspect-osx_64_mpiopenmpipython3.13.____cp313"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_mpiopenmpipython3.13.____cp313.yaml"
-description = "List contents of trilinos-feedstock packages built for variant osx_64_mpiopenmpipython3.13.____cp313"
-[feature.build.tasks."build-osx_64_mpiopenmpipython3.14.____cp314"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_mpiopenmpipython3.14.____cp314.yaml --target-platform osx-64"
-description = "Build trilinos-feedstock with variant osx_64_mpiopenmpipython3.14.____cp314 directly (without setup scripts)"
-[feature.build.tasks."debug-osx_64_mpiopenmpipython3.14.____cp314"]
-cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_mpiopenmpipython3.14.____cp314.yaml --target-platform osx-64"
-description = "Debug trilinos-feedstock with variant osx_64_mpiopenmpipython3.14.____cp314 directly (without setup scripts)"
-[feature.build.tasks."inspect-osx_64_mpiopenmpipython3.14.____cp314"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_mpiopenmpipython3.14.____cp314.yaml"
-description = "List contents of trilinos-feedstock packages built for variant osx_64_mpiopenmpipython3.14.____cp314"
+[feature.build.tasks."build-linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315.yaml --target-platform linux-64"
+description = "Build trilinos-feedstock with variant linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315 directly (without setup scripts)"
+[feature.build.tasks."debug-linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315.yaml --target-platform linux-64"
+description = "Debug trilinos-feedstock with variant linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315 directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315"
+[feature.build.tasks."build-linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315.yaml --target-platform linux-64"
+description = "Build trilinos-feedstock with variant linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315 directly (without setup scripts)"
+[feature.build.tasks."debug-linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315.yaml --target-platform linux-64"
+description = "Debug trilinos-feedstock with variant linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315 directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315"
+[feature.build.tasks."build-linux_64_channel_sourcesconda-forgempimpichpython3.11.____cpython"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgempimpichpython3.11.____cpython.yaml --target-platform linux-64"
+description = "Build trilinos-feedstock with variant linux_64_channel_sourcesconda-forgempimpichpython3.11.____cpython directly (without setup scripts)"
+[feature.build.tasks."debug-linux_64_channel_sourcesconda-forgempimpichpython3.11.____cpython"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgempimpichpython3.11.____cpython.yaml --target-platform linux-64"
+description = "Debug trilinos-feedstock with variant linux_64_channel_sourcesconda-forgempimpichpython3.11.____cpython directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_64_channel_sourcesconda-forgempimpichpython3.11.____cpython"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_channel_sourcesconda-forgempimpichpython3.11.____cpython.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_64_channel_sourcesconda-forgempimpichpython3.11.____cpython"
+[feature.build.tasks."build-linux_64_channel_sourcesconda-forgempimpichpython3.12.____cpython"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgempimpichpython3.12.____cpython.yaml --target-platform linux-64"
+description = "Build trilinos-feedstock with variant linux_64_channel_sourcesconda-forgempimpichpython3.12.____cpython directly (without setup scripts)"
+[feature.build.tasks."debug-linux_64_channel_sourcesconda-forgempimpichpython3.12.____cpython"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgempimpichpython3.12.____cpython.yaml --target-platform linux-64"
+description = "Debug trilinos-feedstock with variant linux_64_channel_sourcesconda-forgempimpichpython3.12.____cpython directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_64_channel_sourcesconda-forgempimpichpython3.12.____cpython"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_channel_sourcesconda-forgempimpichpython3.12.____cpython.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_64_channel_sourcesconda-forgempimpichpython3.12.____cpython"
+[feature.build.tasks."build-linux_64_channel_sourcesconda-forgempimpichpython3.13.____cp313"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgempimpichpython3.13.____cp313.yaml --target-platform linux-64"
+description = "Build trilinos-feedstock with variant linux_64_channel_sourcesconda-forgempimpichpython3.13.____cp313 directly (without setup scripts)"
+[feature.build.tasks."debug-linux_64_channel_sourcesconda-forgempimpichpython3.13.____cp313"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgempimpichpython3.13.____cp313.yaml --target-platform linux-64"
+description = "Debug trilinos-feedstock with variant linux_64_channel_sourcesconda-forgempimpichpython3.13.____cp313 directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_64_channel_sourcesconda-forgempimpichpython3.13.____cp313"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_channel_sourcesconda-forgempimpichpython3.13.____cp313.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_64_channel_sourcesconda-forgempimpichpython3.13.____cp313"
+[feature.build.tasks."build-linux_64_channel_sourcesconda-forgempimpichpython3.14.____cp314"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgempimpichpython3.14.____cp314.yaml --target-platform linux-64"
+description = "Build trilinos-feedstock with variant linux_64_channel_sourcesconda-forgempimpichpython3.14.____cp314 directly (without setup scripts)"
+[feature.build.tasks."debug-linux_64_channel_sourcesconda-forgempimpichpython3.14.____cp314"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgempimpichpython3.14.____cp314.yaml --target-platform linux-64"
+description = "Debug trilinos-feedstock with variant linux_64_channel_sourcesconda-forgempimpichpython3.14.____cp314 directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_64_channel_sourcesconda-forgempimpichpython3.14.____cp314"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_channel_sourcesconda-forgempimpichpython3.14.____cp314.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_64_channel_sourcesconda-forgempimpichpython3.14.____cp314"
+[feature.build.tasks."build-linux_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython.yaml --target-platform linux-64"
+description = "Build trilinos-feedstock with variant linux_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython directly (without setup scripts)"
+[feature.build.tasks."debug-linux_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython.yaml --target-platform linux-64"
+description = "Debug trilinos-feedstock with variant linux_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython"
+[feature.build.tasks."build-linux_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython.yaml --target-platform linux-64"
+description = "Build trilinos-feedstock with variant linux_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython directly (without setup scripts)"
+[feature.build.tasks."debug-linux_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython.yaml --target-platform linux-64"
+description = "Debug trilinos-feedstock with variant linux_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython"
+[feature.build.tasks."build-linux_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313.yaml --target-platform linux-64"
+description = "Build trilinos-feedstock with variant linux_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313 directly (without setup scripts)"
+[feature.build.tasks."debug-linux_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313.yaml --target-platform linux-64"
+description = "Debug trilinos-feedstock with variant linux_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313 directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313"
+[feature.build.tasks."build-linux_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314.yaml --target-platform linux-64"
+description = "Build trilinos-feedstock with variant linux_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314 directly (without setup scripts)"
+[feature.build.tasks."debug-linux_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314.yaml --target-platform linux-64"
+description = "Debug trilinos-feedstock with variant linux_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314 directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314"
+[feature.build.tasks."build-linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315.yaml --target-platform linux-aarch64"
+description = "Build trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315 directly (without setup scripts)"
+[feature.build.tasks."debug-linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315.yaml --target-platform linux-aarch64"
+description = "Debug trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315 directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315"
+[feature.build.tasks."build-linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315.yaml --target-platform linux-aarch64"
+description = "Build trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315 directly (without setup scripts)"
+[feature.build.tasks."debug-linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315.yaml --target-platform linux-aarch64"
+description = "Debug trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315 directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315"
+[feature.build.tasks."build-linux_aarch64_channel_sourcesconda-forgempimpichpython3.11.____cpython"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempimpichpython3.11.____cpython.yaml --target-platform linux-aarch64"
+description = "Build trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgempimpichpython3.11.____cpython directly (without setup scripts)"
+[feature.build.tasks."debug-linux_aarch64_channel_sourcesconda-forgempimpichpython3.11.____cpython"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempimpichpython3.11.____cpython.yaml --target-platform linux-aarch64"
+description = "Debug trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgempimpichpython3.11.____cpython directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_aarch64_channel_sourcesconda-forgempimpichpython3.11.____cpython"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempimpichpython3.11.____cpython.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_channel_sourcesconda-forgempimpichpython3.11.____cpython"
+[feature.build.tasks."build-linux_aarch64_channel_sourcesconda-forgempimpichpython3.12.____cpython"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempimpichpython3.12.____cpython.yaml --target-platform linux-aarch64"
+description = "Build trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgempimpichpython3.12.____cpython directly (without setup scripts)"
+[feature.build.tasks."debug-linux_aarch64_channel_sourcesconda-forgempimpichpython3.12.____cpython"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempimpichpython3.12.____cpython.yaml --target-platform linux-aarch64"
+description = "Debug trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgempimpichpython3.12.____cpython directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_aarch64_channel_sourcesconda-forgempimpichpython3.12.____cpython"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempimpichpython3.12.____cpython.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_channel_sourcesconda-forgempimpichpython3.12.____cpython"
+[feature.build.tasks."build-linux_aarch64_channel_sourcesconda-forgempimpichpython3.13.____cp313"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempimpichpython3.13.____cp313.yaml --target-platform linux-aarch64"
+description = "Build trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgempimpichpython3.13.____cp313 directly (without setup scripts)"
+[feature.build.tasks."debug-linux_aarch64_channel_sourcesconda-forgempimpichpython3.13.____cp313"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempimpichpython3.13.____cp313.yaml --target-platform linux-aarch64"
+description = "Debug trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgempimpichpython3.13.____cp313 directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_aarch64_channel_sourcesconda-forgempimpichpython3.13.____cp313"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempimpichpython3.13.____cp313.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_channel_sourcesconda-forgempimpichpython3.13.____cp313"
+[feature.build.tasks."build-linux_aarch64_channel_sourcesconda-forgempimpichpython3.14.____cp314"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempimpichpython3.14.____cp314.yaml --target-platform linux-aarch64"
+description = "Build trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgempimpichpython3.14.____cp314 directly (without setup scripts)"
+[feature.build.tasks."debug-linux_aarch64_channel_sourcesconda-forgempimpichpython3.14.____cp314"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempimpichpython3.14.____cp314.yaml --target-platform linux-aarch64"
+description = "Debug trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgempimpichpython3.14.____cp314 directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_aarch64_channel_sourcesconda-forgempimpichpython3.14.____cp314"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempimpichpython3.14.____cp314.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_channel_sourcesconda-forgempimpichpython3.14.____cp314"
+[feature.build.tasks."build-linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython.yaml --target-platform linux-aarch64"
+description = "Build trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython directly (without setup scripts)"
+[feature.build.tasks."debug-linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython.yaml --target-platform linux-aarch64"
+description = "Debug trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython"
+[feature.build.tasks."build-linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython.yaml --target-platform linux-aarch64"
+description = "Build trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython directly (without setup scripts)"
+[feature.build.tasks."debug-linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython.yaml --target-platform linux-aarch64"
+description = "Debug trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython"
+[feature.build.tasks."build-linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313.yaml --target-platform linux-aarch64"
+description = "Build trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313 directly (without setup scripts)"
+[feature.build.tasks."debug-linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313.yaml --target-platform linux-aarch64"
+description = "Debug trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313 directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313"
+[feature.build.tasks."build-linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314.yaml --target-platform linux-aarch64"
+description = "Build trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314 directly (without setup scripts)"
+[feature.build.tasks."debug-linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314.yaml --target-platform linux-aarch64"
+description = "Debug trilinos-feedstock with variant linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314 directly (without setup scripts)"
+[feature.build.tasks."inspect-linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314.yaml"
+description = "List contents of trilinos-feedstock packages built for variant linux_aarch64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314"
+[feature.build.tasks."build-osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315.yaml --target-platform osx-64"
+description = "Build trilinos-feedstock with variant osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315 directly (without setup scripts)"
+[feature.build.tasks."debug-osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315.yaml --target-platform osx-64"
+description = "Debug trilinos-feedstock with variant osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315 directly (without setup scripts)"
+[feature.build.tasks."inspect-osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315.yaml"
+description = "List contents of trilinos-feedstock packages built for variant osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpimpichpython3.15.____cp315"
+[feature.build.tasks."build-osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315.yaml --target-platform osx-64"
+description = "Build trilinos-feedstock with variant osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315 directly (without setup scripts)"
+[feature.build.tasks."debug-osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315.yaml --target-platform osx-64"
+description = "Debug trilinos-feedstock with variant osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315 directly (without setup scripts)"
+[feature.build.tasks."inspect-osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315.yaml"
+description = "List contents of trilinos-feedstock packages built for variant osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcmpiopenmpipython3.15.____cp315"
+[feature.build.tasks."build-osx_64_channel_sourcesconda-forgempimpichpython3.11.____cpython"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgempimpichpython3.11.____cpython.yaml --target-platform osx-64"
+description = "Build trilinos-feedstock with variant osx_64_channel_sourcesconda-forgempimpichpython3.11.____cpython directly (without setup scripts)"
+[feature.build.tasks."debug-osx_64_channel_sourcesconda-forgempimpichpython3.11.____cpython"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgempimpichpython3.11.____cpython.yaml --target-platform osx-64"
+description = "Debug trilinos-feedstock with variant osx_64_channel_sourcesconda-forgempimpichpython3.11.____cpython directly (without setup scripts)"
+[feature.build.tasks."inspect-osx_64_channel_sourcesconda-forgempimpichpython3.11.____cpython"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_channel_sourcesconda-forgempimpichpython3.11.____cpython.yaml"
+description = "List contents of trilinos-feedstock packages built for variant osx_64_channel_sourcesconda-forgempimpichpython3.11.____cpython"
+[feature.build.tasks."build-osx_64_channel_sourcesconda-forgempimpichpython3.12.____cpython"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgempimpichpython3.12.____cpython.yaml --target-platform osx-64"
+description = "Build trilinos-feedstock with variant osx_64_channel_sourcesconda-forgempimpichpython3.12.____cpython directly (without setup scripts)"
+[feature.build.tasks."debug-osx_64_channel_sourcesconda-forgempimpichpython3.12.____cpython"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgempimpichpython3.12.____cpython.yaml --target-platform osx-64"
+description = "Debug trilinos-feedstock with variant osx_64_channel_sourcesconda-forgempimpichpython3.12.____cpython directly (without setup scripts)"
+[feature.build.tasks."inspect-osx_64_channel_sourcesconda-forgempimpichpython3.12.____cpython"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_channel_sourcesconda-forgempimpichpython3.12.____cpython.yaml"
+description = "List contents of trilinos-feedstock packages built for variant osx_64_channel_sourcesconda-forgempimpichpython3.12.____cpython"
+[feature.build.tasks."build-osx_64_channel_sourcesconda-forgempimpichpython3.13.____cp313"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgempimpichpython3.13.____cp313.yaml --target-platform osx-64"
+description = "Build trilinos-feedstock with variant osx_64_channel_sourcesconda-forgempimpichpython3.13.____cp313 directly (without setup scripts)"
+[feature.build.tasks."debug-osx_64_channel_sourcesconda-forgempimpichpython3.13.____cp313"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgempimpichpython3.13.____cp313.yaml --target-platform osx-64"
+description = "Debug trilinos-feedstock with variant osx_64_channel_sourcesconda-forgempimpichpython3.13.____cp313 directly (without setup scripts)"
+[feature.build.tasks."inspect-osx_64_channel_sourcesconda-forgempimpichpython3.13.____cp313"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_channel_sourcesconda-forgempimpichpython3.13.____cp313.yaml"
+description = "List contents of trilinos-feedstock packages built for variant osx_64_channel_sourcesconda-forgempimpichpython3.13.____cp313"
+[feature.build.tasks."build-osx_64_channel_sourcesconda-forgempimpichpython3.14.____cp314"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgempimpichpython3.14.____cp314.yaml --target-platform osx-64"
+description = "Build trilinos-feedstock with variant osx_64_channel_sourcesconda-forgempimpichpython3.14.____cp314 directly (without setup scripts)"
+[feature.build.tasks."debug-osx_64_channel_sourcesconda-forgempimpichpython3.14.____cp314"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgempimpichpython3.14.____cp314.yaml --target-platform osx-64"
+description = "Debug trilinos-feedstock with variant osx_64_channel_sourcesconda-forgempimpichpython3.14.____cp314 directly (without setup scripts)"
+[feature.build.tasks."inspect-osx_64_channel_sourcesconda-forgempimpichpython3.14.____cp314"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_channel_sourcesconda-forgempimpichpython3.14.____cp314.yaml"
+description = "List contents of trilinos-feedstock packages built for variant osx_64_channel_sourcesconda-forgempimpichpython3.14.____cp314"
+[feature.build.tasks."build-osx_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython.yaml --target-platform osx-64"
+description = "Build trilinos-feedstock with variant osx_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython directly (without setup scripts)"
+[feature.build.tasks."debug-osx_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython.yaml --target-platform osx-64"
+description = "Debug trilinos-feedstock with variant osx_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython directly (without setup scripts)"
+[feature.build.tasks."inspect-osx_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython.yaml"
+description = "List contents of trilinos-feedstock packages built for variant osx_64_channel_sourcesconda-forgempiopenmpipython3.11.____cpython"
+[feature.build.tasks."build-osx_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython.yaml --target-platform osx-64"
+description = "Build trilinos-feedstock with variant osx_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython directly (without setup scripts)"
+[feature.build.tasks."debug-osx_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython.yaml --target-platform osx-64"
+description = "Debug trilinos-feedstock with variant osx_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython directly (without setup scripts)"
+[feature.build.tasks."inspect-osx_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython.yaml"
+description = "List contents of trilinos-feedstock packages built for variant osx_64_channel_sourcesconda-forgempiopenmpipython3.12.____cpython"
+[feature.build.tasks."build-osx_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313.yaml --target-platform osx-64"
+description = "Build trilinos-feedstock with variant osx_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313 directly (without setup scripts)"
+[feature.build.tasks."debug-osx_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313.yaml --target-platform osx-64"
+description = "Debug trilinos-feedstock with variant osx_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313 directly (without setup scripts)"
+[feature.build.tasks."inspect-osx_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313.yaml"
+description = "List contents of trilinos-feedstock packages built for variant osx_64_channel_sourcesconda-forgempiopenmpipython3.13.____cp313"
+[feature.build.tasks."build-osx_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314.yaml --target-platform osx-64"
+description = "Build trilinos-feedstock with variant osx_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314 directly (without setup scripts)"
+[feature.build.tasks."debug-osx_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/osx_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314.yaml --target-platform osx-64"
+description = "Debug trilinos-feedstock with variant osx_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314 directly (without setup scripts)"
+[feature.build.tasks."inspect-osx_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314.yaml"
+description = "List contents of trilinos-feedstock packages built for variant osx_64_channel_sourcesconda-forgempiopenmpipython3.14.____cp314"
 
 [environments]
 build = ["build"]

@@ -1,0 +1,10 @@
+--- a/packages/PyTrilinos2/CMakeLists.txt
++++ b/packages/PyTrilinos2/CMakeLists.txt
+@@ -331,6 +331,7 @@
+ MESSAGE(STATUS "PyTrilinos2 installation path: ${PyTrilinos2_INSTALL_DIR}")
+ 
+ INSTALL(FILES
++  ${CMAKE_CURRENT_SOURCE_DIR}/python/__init__.py
+   ${CMAKE_CURRENT_BINARY_DIR}/python/getTpetraTypeName.py
+   DESTINATION ${PyTrilinos2_INSTALL_DIR})
+ 

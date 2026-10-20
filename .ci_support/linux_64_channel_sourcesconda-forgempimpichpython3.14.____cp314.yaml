@@ -32,14 +32,14 @@ libmatio:
 - 1.5.30
 libnetcdf:
 - 4.10.1
+libtorch:
+- '2.12'
 mpi:
 - mpich
 mpich:
 - '5'
 netcdf_cxx4:
 - '4.3'
-numpy:
-- '2'
 openmpi:
 - '5'
 pin_run_as_build:

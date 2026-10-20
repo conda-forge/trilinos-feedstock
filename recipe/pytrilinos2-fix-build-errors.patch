@@ -1,0 +1,69 @@
+Backport of trilinos/Trilinos#15807 (commit caec09d3fa, "PyTrilinos2: Fix build
+errors"), merged after 17.2.1. Drop on the next Trilinos release.
+
+With ETI enabled, the generated Thyra_TpetraThyraWrappers.hpp and
+Thyra_TpetraLinearOp.hpp only include the _decl headers, so binder (clang)
+rejects the explicit instantiations in PyTrilinos2_Thyra_ETI.hpp with
+"explicit instantiation of undefined function template".
+
+diff --git a/packages/PyTrilinos2/scripts/PyTrilinos2_config.cfg b/packages/PyTrilinos2/scripts/PyTrilinos2_config.cfg
+index 58391766a964..4db59df83f3b 100644
+--- a/packages/PyTrilinos2/scripts/PyTrilinos2_config.cfg
++++ b/packages/PyTrilinos2/scripts/PyTrilinos2_config.cfg
+@@ -35,6 +35,7 @@
+ # Teuchos
+ +namespace Teuchos
+ +include <Teuchos_RCP.hpp>
+++include <Teuchos_StackedTimer.hpp>
+ 
+ +include_for_namespace Teuchos <PyTrilinos2_Teuchos_Custom.hpp>
+ +add_on_binder_for_namespace Teuchos def_Teuchos_functions
+diff --git a/packages/PyTrilinos2/src/PyTrilinos2_Kokkos_Custom.hpp b/packages/PyTrilinos2/src/PyTrilinos2_Kokkos_Custom.hpp
+index a0ef1d9bd9d0..e49ccfb74768 100644
+--- a/packages/PyTrilinos2/src/PyTrilinos2_Kokkos_Custom.hpp
++++ b/packages/PyTrilinos2/src/PyTrilinos2_Kokkos_Custom.hpp
+@@ -44,9 +44,9 @@ template <class T>
+ torch::Tensor view_as_torch(T kokkos_array) {
+   torch::Tensor result;
+   if constexpr (T::rank == 1)
+-    result = torch::from_blob(kokkos_array.data(), {kokkos_array.extent(0)}, {kokkos_array.stride(0)}, torch::CppTypeToScalarType<typename T::value_type>::value);
++    result = torch::from_blob(kokkos_array.data(), {kokkos_array.extent_int(0)}, {kokkos_array.stride(0)}, torch::CppTypeToScalarType<typename T::value_type>::value);
+   else if constexpr (T::rank == 2)
+-    result = torch::from_blob(kokkos_array.data(), {kokkos_array.extent(0), kokkos_array.extent(1)}, {kokkos_array.stride(0), kokkos_array.stride(1)}, torch::CppTypeToScalarType<typename T::value_type>::value);
++    result = torch::from_blob(kokkos_array.data(), {kokkos_array.extent_int(0), kokkos_array.extent_int(1)}, {kokkos_array.stride(0), static_cast<long>(kokkos_array.stride(1))}, torch::CppTypeToScalarType<typename T::value_type>::value);
+   return result;
+ }
+ 
+diff --git a/packages/PyTrilinos2/src/PyTrilinos2_Teuchos_ETI.hpp b/packages/PyTrilinos2/src/PyTrilinos2_Teuchos_ETI.hpp
+index d90bf91a9f03..d147b8aabf6f 100644
+--- a/packages/PyTrilinos2/src/PyTrilinos2_Teuchos_ETI.hpp
++++ b/packages/PyTrilinos2/src/PyTrilinos2_Teuchos_ETI.hpp
+@@ -11,6 +11,7 @@
+ #define PYTRILINOS2_TEUCHOS_ETI
+ 
+ #include <Teuchos_ParameterList.hpp>
++#include <Teuchos_StackedTimer.hpp>
+ 
+ namespace Teuchos {
+     inline void initiate(ParameterList p) {};
+diff --git a/packages/PyTrilinos2/src/PyTrilinos2_Thyra_ETI.hpp b/packages/PyTrilinos2/src/PyTrilinos2_Thyra_ETI.hpp
+index 2692150a3f19..4a49701bb64a 100644
+--- a/packages/PyTrilinos2/src/PyTrilinos2_Thyra_ETI.hpp
++++ b/packages/PyTrilinos2/src/PyTrilinos2_Thyra_ETI.hpp
+@@ -10,12 +10,14 @@
+ #ifndef PYTRILINOS2_THYRA_ETI
+ #define PYTRILINOS2_THYRA_ETI
+ 
+-#include <Thyra_TpetraThyraWrappers.hpp>
++#include <Thyra_TpetraThyraWrappers_decl.hpp>
++#include <Thyra_TpetraThyraWrappers_def.hpp>
+ #include <Thyra_TpetraEuclideanScalarProd.hpp>
+ #include <Thyra_TpetraVectorSpace.hpp>
+ #include <Thyra_TpetraMultiVector.hpp>
+ #include <Thyra_TpetraVector.hpp>
+-#include <Thyra_TpetraLinearOp.hpp>
++#include <Thyra_TpetraLinearOp_decl.hpp>
++#include <Thyra_TpetraLinearOp_def.hpp>
+ 
+ #include <Thyra_LinearOpWithSolveBase.hpp>
+ #include <Thyra_LinearSolverBuilderBase.hpp>

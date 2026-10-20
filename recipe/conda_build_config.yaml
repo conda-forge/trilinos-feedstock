@@ -1,5 +1,3 @@
 mpi:
   - openmpi
   - mpich
-numpy:
-  - 2 

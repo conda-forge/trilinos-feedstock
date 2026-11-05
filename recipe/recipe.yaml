@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "16.2.0"
+  version: "17-3-0"
 
 recipe:
   name: trilinos-split
@@ -9,14 +9,14 @@ recipe:
 
 source:
   url: https://github.com/trilinos/Trilinos/archive/trilinos-release-${{ version | replace('.', '-') }}.tar.gz
-  sha256: 543aa56232d7c0cbe73705fab2d3b5524f11b15fef8917aa14de02d23a5ca418
+  sha256: 8094740da60bf75b675ad556ed00e337c8547be0dc9603893c4894f4abf0396b
   patches:
     - swig-include-dirs.patch
     - tpetra-swig-remove-classic.patch
     - pytrilinos-python-version.patch
 
 build:
-  number: 3
+  number: 0
   skip: win
 
 outputs:

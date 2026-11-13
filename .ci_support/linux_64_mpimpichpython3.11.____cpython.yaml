@@ -1,3 +1,5 @@
+DOCKER_PLATFORM:
+- linux/amd64
 c_compiler:
 - gcc
 c_compiler_version:
@@ -37,14 +39,14 @@ mpi:
 mpich:
 - '5'
 netcdf_cxx4:
-- '4.3'
+- 4.3.2
 numpy:
 - '2'
 openmpi:
 - '5'
 pin_run_as_build:
   netcdf-cxx4:
-    max_pin: x.x
+    max_pin: x.x.x
   python:
     min_pin: x.x
     max_pin: x.x
@@ -58,5 +60,3 @@ zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
   - fortran_compiler_version
-- - python
-  - channel_sources

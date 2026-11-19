@@ -16,7 +16,7 @@ source:
     - pytrilinos-python-version.patch
 
 build:
-  number: 4
+  number: 5
   skip: win
 
 outputs:
